@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         
         \App\Models\Category::create([
-            'nama'=>'Lain',
-            'slug'=>'Lain',
+            'nama'=>'TempCategory',
+            'slug'=>'temp-category',
         ]);
         \App\Models\Category::create([
             'nama'=>'Nasi',

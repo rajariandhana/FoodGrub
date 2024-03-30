@@ -7,7 +7,7 @@
 </div> --}}
 
 @extends('layout')
-<h1>Menu Category: {{$category}}</h1>
+{{-- <h1>Menu Category: {{$category}}</h1> --}}
 @section('container')
 <table>
     <tr>

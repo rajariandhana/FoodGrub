@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\Menu;
-use App\Models\Kategori;
 use App\Models\Category;
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\TempController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\KategoriController;
 
 /*
@@ -19,28 +21,30 @@ use App\Http\Controllers\KategoriController;
 */
 
 Route::get('/', function () {
-    return view('halodunia');
+    return view('home',[
+        'namaHalaman'=>'Home'
+    ]);
 });
-
-Route::get('/kategori', [KategoriController::class, 'index']);
-
-Route::get('/kategori/{kategori}', [KategoriController::class, 'Show']);
 
 Route::get('/menus', [MenuController::class, 'index']);
-Route::get('/categories',function(){
-    return view('categories',[
-        'title'=>'Menu categories',
-        'categories'=>Category::all()
-        // 'daftarmenu'=>Category::tipe()
-    ]);
+
+Route::get('/categories',[CategoryController::class,'index']);
+// Route::get('/categories', CategoryController::class)->index();
+
+// Route::get('/categories/{category:slug}', function(Category $category){
+//     return view('category',[
+//         'namaHalaman'=>"Category: $category->nama",
+//         'menus'=>$category->menus,
+//         'category'=>$category->nama
+//     ]);
+// });
+Route::get('/categories/{category:slug}',function(Category $category){
+    return app()->call([CategoryController::class, 'semuakat'],
+    ['namaHalaman'=>"Category: $category->nama",
+    'menus'=>$category->menus,
+    'category'=>$category->nama]);
 });
-Route::get('/categories/{category:slug}', function(Category $category){
-    return view('category',[
-        'title'=>$category->nama,
-        'menus'=>$category->menus,
-        'category'=>$category->nama
-    ]);
-});
+// Route::get('/categories/{category:slug}', [CategoryController::class,''])
 // Route::get('/menus', [MenuController::class, 'show']);
 
 // Route::get('/menus', function(){
