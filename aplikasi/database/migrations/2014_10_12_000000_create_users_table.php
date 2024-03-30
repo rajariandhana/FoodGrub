@@ -20,6 +20,21 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        // Schema::create('kategori', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('nama');
+        // });
+        // Schema::create('menu', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('nama');
+        //     $table->unsignedInteger('harga');
+        //     $table->string('kategori_nama');
+        // });
+        // Schema::create('pesanan', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->unsignedInteger('jml');
+        //     $table->integer('menu_id');
+        // });
     }
 
     /**
