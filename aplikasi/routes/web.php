@@ -4,6 +4,7 @@ use App\Models\Menu;
 use App\Models\Category;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EditController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TempController;
 use App\Http\Controllers\CategoryController;
@@ -44,6 +45,14 @@ Route::get('/categories/{category:slug}',function(Category $category){
     'menus'=>$category->menus,
     'category'=>$category->nama]);
 });
+
+Route::get('/edit', [EditController::class, 'index']);
+
+// Route::get('/add_category',[EditController::class,'create']);
+Route::post('/create_category',[EditController::class,'create_category']);
+Route::put('/update_category/{category_id}',[EditController::class,'update_category']);
+Route::delete('/delete_category/{category_id}',[EditController::class,'delete_category']);
+
 // Route::get('/categories/{category:slug}', [CategoryController::class,''])
 // Route::get('/menus', [MenuController::class, 'show']);
 

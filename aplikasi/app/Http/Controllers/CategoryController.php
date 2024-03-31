@@ -23,4 +23,11 @@ class CategoryController extends Controller
             'category'=>$category
         ]);
     }
+
+    public function edit()
+    {
+        return view('editcategory',[
+            'categories'=>Category::all()
+        ]);
+    }
 }

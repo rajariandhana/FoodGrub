@@ -105,10 +105,12 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Menu::create([
             'category_id'=>3,
-            'nama'=>'mie rebus',
-            'harga'=>22,
+            'nama'=>'bakmie',
+            'harga'=>13,
             'desc'=>'desk',
         ]);
+
+
         
     }
 }
