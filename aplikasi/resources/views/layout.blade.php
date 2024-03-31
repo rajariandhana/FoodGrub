@@ -13,9 +13,9 @@
     <header>
         <a href="/" id="homeButton">/home</a>
         <h1>{{ $namaHalaman }}</h1>
-        <li><a href="/categories" class="">categories</a></li>
+        {{-- <li><a href="/categories" class="">categories</a></li> --}}
         <li><a href="/menus">menus</a></li>
-        <li><a href="/edit">edit</a></li>
+        {{-- <li><a href="/edit">edit</a></li> --}}
     </header>
     <div>
         @yield('container')

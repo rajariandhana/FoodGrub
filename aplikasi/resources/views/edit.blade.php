@@ -1,31 +1,21 @@
-@extends('layout')
+{{-- @extends('layout')
 
 @section('container')
 <form action="/create_category" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="text" name="nama" placeholder="category name">
-    <button type="submit">Create Category</button>
+    <button type="submit" class="button-create">Create Category</button>
     @error('nama')
         <div class="alert alert-danger">{{$message}}</div>
     @enderror
 </form>
 
 @foreach($categories as $category)
+<div class="edit-category-header">
     <h3>{{ $category->nama }}</h3>
-    <form action="/update_category/{{$category->id}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('put')
-        <input type="text" name="nama" placeholder="category name">
-        <button type="submit">Update Category</button>
-        @error('nama')
-            <div class="alert alert-danger">{{$message}}</div>
-        @enderror
-    </form>
-    <form action="/delete_category/{{$category->id}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('delete')
-        <button type="submit">Delete Category</button>
-    </form>
+    <a href="/edit_category/{{$category->id}}">Edit</a>
+</div>
+    
     <table>
         <thead>
             <tr>
@@ -44,5 +34,13 @@
             @endforeach
         </tbody>
     </table>
+    <script>
+        document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            var confirmed = confirm("Are you sure you want to delete this category?");
+            if (!confirmed) {
+                event.preventDefault();
+            }
+        });
+    </script>
 @endforeach
-@endsection
+@endsection --}}

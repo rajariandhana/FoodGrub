@@ -47,11 +47,14 @@ Route::get('/categories/{category:slug}',function(Category $category){
 });
 
 Route::get('/edit', [EditController::class, 'index']);
+Route::get('/edit_category/{category_id}', [CategoryController::class, 'edit']);
+
 
 // Route::get('/add_category',[EditController::class,'create']);
-Route::post('/create_category',[EditController::class,'create_category']);
-Route::put('/update_category/{category_id}',[EditController::class,'update_category']);
-Route::delete('/delete_category/{category_id}',[EditController::class,'delete_category']);
+Route::post('/create_category',[CategoryController::class,'create_category']);
+Route::put('/update_category/{category_id}',[CategoryController::class,'update_category']);
+Route::delete('/delete_category/{category_id}',[CategoryController::class,'delete_category']);
+
 
 // Route::get('/categories/{category:slug}', [CategoryController::class,''])
 // Route::get('/menus', [MenuController::class, 'show']);
