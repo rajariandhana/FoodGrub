@@ -16,6 +16,8 @@
         {{-- <li><a href="/categories" class="">categories</a></li> --}}
         <li><a href="/menus">menus</a></li>
         {{-- <li><a href="/edit">edit</a></li> --}}
+        <li><a href="/neworder">New Order</a></li>
+
     </header>
     <div>
         @yield('container')

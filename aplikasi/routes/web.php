@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TempController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\KategoriController;
 
@@ -55,7 +56,7 @@ Route::post('/create_category',[CategoryController::class,'create_category']);
 Route::put('/update_category/{category_id}',[CategoryController::class,'update_category']);
 Route::delete('/delete_category/{category_id}',[CategoryController::class,'delete_category']);
 
-
+Route::get('/neworder', [OrderController::class, 'index']);
 // Route::get('/categories/{category:slug}', [CategoryController::class,''])
 // Route::get('/menus', [MenuController::class, 'show']);
 

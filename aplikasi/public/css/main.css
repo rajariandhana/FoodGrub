@@ -58,3 +58,19 @@ button:hover
 {
     background-color: #FF605C;
 }
+
+.neworder
+{
+    background-color: #b09b73;
+    display: flex;
+    flex-direction: row;
+}
+.menulist
+{
+    background-color: #878787;
+
+}
+.cart
+{
+    background-color: #4d4d4d;
+}
