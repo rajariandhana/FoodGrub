@@ -7,14 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{{url('css/main.css')}}">
+    <link rel="stylesheet" href="{{url('css/neworder.css')}}">
+    <link rel="stylesheet" href="{{url('css/menulist.css')}}">
+    <link rel="stylesheet" href="{{url('css/cart.css')}}">
 </head>
 
 <body>
     <header>
         <a href="/" id="homeButton">/home</a>
         <h1>{{ $namaHalaman }}</h1>
-        <li><a href="/categories" class="">categories</a></li>
+        {{-- <li><a href="/categories" class="">categories</a></li> --}}
         <li><a href="/menus">menus</a></li>
+        {{-- <li><a href="/edit">edit</a></li> --}}
+        <li><a href="/neworder">New Order</a></li>
+
     </header>
     <div>
         @yield('container')

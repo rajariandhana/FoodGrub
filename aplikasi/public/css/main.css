@@ -13,14 +13,103 @@ header
 }
 
 table {
-    width: 100%;
+    /* width: 100%; */
     border-collapse: collapse;
 }
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    /* padding: 8px; */
     text-align: left;
 }
 th {
     background-color: #f2f2f2;
+}
+.categoryName
+{
+    font-weight: bold;
+}
+.edit-category-header
+{
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* .neworder
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+} */
+
+
+.pos
+{
+    background-color: #00CA4E;
+}
+.neg
+{
+    background-color: #FF605C;
+}
+
+.menuRow
+{
+    padding: 0;
+}
+.menuRow td:last-child
+{
+    /* flex-grow: 1; */
+    padding: 0;
+}
+
+.addToCartButton
+{
+    background-color: #00CA4E;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.addToCartCell
+{
+    padding: 0;
+}
+
+button
+{
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 10px;
+    font-size: 1em;
+}
+button:hover
+{
+    cursor: pointer;
+}
+.button-create
+{
+    background-color: #00CA4E;
+}
+.button-update
+{
+    background-color: #FFBD44;
+}
+.button-delete
+{
+    background-color: #FF605C;
+}
+
+.neworder
+{
+    /* background-color: #b09b73; */
+    display: flex;
+    flex-direction: row;
+}
+
+.carttable tr td:nth-child(1)
+{
+    /* display: none; */
 }
