@@ -23,4 +23,50 @@ class CategoryController extends Controller
             'category'=>$category
         ]);
     }
+
+    public function edit($id)
+    {
+        return view('editcategory',[
+            'namaHalaman'=>'Edit',
+            'category'=>Category::findorfail($id)
+        ]);
+    }
+
+    public function create_category(Request $request)
+    {
+        $request->validate([
+            'nama'=>'required',
+        ],
+        [
+            'nama.required'=>'nama tidak boleh kosong',
+        ]);
+        Category::create([
+            'nama'=>$request->nama,
+            'slug'=>$request->nama,
+        ]);
+        return redirect('/menus');
+    }
+    
+    public function update_category(Request $request, $id)
+    {
+        $request->validate([
+            'nama'=>'required',
+        ],
+        [
+            'nama.required'=>'nama tidak boleh kosong',
+        ]);
+        $category = Category::findorfail($id);
+        $new_data = [
+            'nama'=>$request->nama,
+            'slug'=>$request->nama,
+        ];
+        $category->update($new_data);
+        return redirect('/menus');
+    }
+    public function delete_category($id)
+    {
+        $category = Category::findorfail($id);
+        $category->delete();
+        return redirect('/menus');
+    }
 }

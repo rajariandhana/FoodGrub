@@ -1,4 +1,4 @@
-@extends('layout')
+{{-- @extends('layout')
 
 @section('container')
 <form action="/create_category" method="POST" enctype="multipart/form-data">
@@ -13,7 +13,7 @@
 @foreach($categories as $category)
 <div class="edit-category-header">
     <h3>{{ $category->nama }}</h3>
-    <a href="/edit_category/{{$category->id}}" class="button-update">Edit</a>
+    <a href="/edit_category/{{$category->id}}">Edit</a>
 </div>
     
     <table>
@@ -43,4 +43,4 @@
         });
     </script>
 @endforeach
-@endsection
+@endsection --}}
