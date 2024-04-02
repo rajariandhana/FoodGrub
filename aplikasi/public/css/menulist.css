@@ -1,0 +1,29 @@
+th, td
+{
+    padding: 5px 10px;
+}
+
+.menuNama
+{
+    min-width: 300px;
+    /* background-color: red; */
+}
+.menuHarga
+{
+    width: 60px;
+    text-align: center;
+}
+.addToCartCell
+{
+    width: 60px;
+}
+
+.categoryRow
+{
+    background-color: #ddd;
+}
+
+.button-addToCart
+{
+    width: 100%;
+}
