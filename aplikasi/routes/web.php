@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TempController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\KategoriController;
@@ -60,23 +61,9 @@ Route::get('/neworder', [OrderController::class, 'index']);
 
 Route::post('/addtocart/{menu_id}',[OrderController::class,'AddToCart']);
 Route::post('/removefromcart/{menu_id}',[OrderController::class,'RemoveFromCart']);
-// Route::get('/categories/{category:slug}', [CategoryController::class,''])
-// Route::get('/menus', [MenuController::class, 'show']);
 
-// Route::get('/menus', function(){
-//     return view('menus',[
-//         "menus"=>Menu::all()
-//     ]);
-// });
+Route::post('/create_order', [OrderController::class, 'CreateOrder']);
 
-// Route::get('/something', [SomeController::class, 'someFunction']);
 
-// Route::get($uri, $callback);
-// Route::match(['get','post'],$uri, $callback);
-// Route::any($uri, $callback);
-
-// Route::view('/welcome','welcome');
-// Route::view('/welcome','welcome',['name'=>'orang']);
-
-        Route::post('/create_menu',[MenuController::class, 'create_menu']);
-        Route::put('/update_menu/{menu_id}',[MenuController::class, 'update_menu']);
+Route::post('/create_menu',[MenuController::class, 'create_menu']);
+Route::put('/update_menu/{menu_id}',[MenuController::class, 'update_menu']);

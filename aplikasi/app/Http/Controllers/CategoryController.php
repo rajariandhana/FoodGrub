@@ -26,9 +26,10 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+        $category = Category::findorfail($id);
         return view('editcategory',[
-            'namaHalaman'=>'Edit',
-            'category'=>Category::findorfail($id)
+            'namaHalaman'=>$category->nama,
+            'category'=>$category
         ]);
     }
 

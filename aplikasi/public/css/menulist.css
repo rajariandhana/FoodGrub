@@ -3,9 +3,12 @@ th, td
     padding: 5px 10px;
 }
 
-.menuNama
+
+.menuNama, .menuDesc
 {
     min-width: 300px;
+    padding: 5px 10px;
+
     /* background-color: red; */
 }
 .menuHarga
@@ -13,9 +16,10 @@ th, td
     width: 60px;
     text-align: center;
 }
+
 .addToCartCell
 {
-    width: 60px;
+    padding: 0;
 }
 
 .categoryRow
@@ -26,4 +30,5 @@ th, td
 .button-addToCart
 {
     width: 100%;
+    border-radius: 0;
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Order;
+use App\Models\order_menu;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -79,5 +81,53 @@ class OrderController extends Controller
         dd(
             Session::all()
         );
+    }
+    public function CreateOrder(Request $request)
+    {
+        // $str = "[1_2_3][4_5_6][7_8_9]";
+        $str = $request->myOrder;
+        $pattern = '/\[(.*?)\]/';
+        preg_match_all($pattern, $str, $matches);
+        $result = [];
+        $price = 0;
+        foreach ($matches[1] as $match) {
+            $numbers = explode('_', $match);
+            $price += intval($numbers[2] * $numbers[3]);
+            $result[] = [
+                intval($numbers[0]),
+                $numbers[1],
+                intval($numbers[2]),
+                intval($numbers[3])
+            ];
+        }
+        
+        $newOrderID = $this->GetNewOrderID($price);
+        $this->StoreData($result, $newOrderID);
+
+        // dd($result);
+    }
+    public function GetNewOrderID($price)
+    {
+        $order = new Order();
+        $order->totalPrice = $price;
+        $order->save();
+        return $order->id;
+    }
+    public function StoreData($data, $orderID)
+    {
+        foreach ($data as $menuItem) {
+            // Create a new instance of OrderMenu model
+            $orderMenu = new order_menu();
+    
+            // Assign values from the array
+            $orderMenu->order_id = $orderID; // If $order_id is available
+            $orderMenu->menu_id = $menuItem[0];
+            $orderMenu->menu_price = $menuItem[2];
+            $orderMenu->qty = $menuItem[3];
+    
+            // Save the order menu item to the database
+            $orderMenu->save();
+        }
+        
     }
 }
