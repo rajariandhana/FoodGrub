@@ -1,0 +1,22 @@
+th, td
+{
+    padding: 5px 10px;
+}
+.orderRow
+{
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.menuNama, .menuDesc
+{
+    min-width: 300px;
+    padding: 5px 10px;
+
+    /* background-color: red; */
+}
+.menuHarga
+{
+    /* width: 60px; */
+    text-align: center;
+}

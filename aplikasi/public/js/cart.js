@@ -124,6 +124,8 @@ sessionStorage.setItem("userData","a");
 
 function SumOrder()
 {
+    // console.log(cartbody.rows.length)
+    // if(cartbody.rows.length == 0) return;
     var value="";
     for(var i=0; i<cartbody.rows.length; i++)
     {

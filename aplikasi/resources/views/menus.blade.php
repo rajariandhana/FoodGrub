@@ -1,5 +1,7 @@
 @extends('layout')
-
+@section('css')
+    <link rel="stylesheet" href="{{url('css/menulist.css')}}">
+@endsection
 @section('container')
 <form action="/create_category" method="POST" enctype="multipart/form-data"
 class="input-submit">

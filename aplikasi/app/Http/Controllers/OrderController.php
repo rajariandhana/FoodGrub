@@ -6,21 +6,40 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\order_menu;
+use App\Models\Menu;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function neworder()
     {
         // Session::flush();
         // Session::forget('cart');
         // $cart = Session::get('cart', []); // Get cart from session, default to empty array if not exists
         // Session::put('cart',[]);
         // session_start();
+        
         return view('neworder',[
             'namaHalaman'=>'New Order',
             'categories'=>Category::all()
             // 'daftarmenu'=>Category::tipe()
+        ]);
+    }
+
+    public function Orders()
+    {
+        // $orders = Order::with('orderMenus.menu')->get();
+        $orders = Order::all();
+        foreach($orders as $order)
+        {
+            $order->menus = order_menu::where('order_id',$order->id)->get();
+            // $category->menus = Menu::where('category_id', $category->id)->get();
+
+        }
+
+        return view('orders', [
+            'namaHalaman' => 'Orders',
+            'orders' => $orders
         ]);
     }
 
@@ -86,6 +105,8 @@ class OrderController extends Controller
     {
         // $str = "[1_2_3][4_5_6][7_8_9]";
         $str = $request->myOrder;
+        // dd($str);
+        if($str == null) return redirect('/neworder');
         $pattern = '/\[(.*?)\]/';
         preg_match_all($pattern, $str, $matches);
         $result = [];
@@ -95,39 +116,38 @@ class OrderController extends Controller
             $price += intval($numbers[2] * $numbers[3]);
             $result[] = [
                 intval($numbers[0]),
-                $numbers[1],
+                strval($numbers[1]),
                 intval($numbers[2]),
                 intval($numbers[3])
             ];
         }
-        
+        // dd($result);
         $newOrderID = $this->GetNewOrderID($price);
         $this->StoreData($result, $newOrderID);
-
+        return redirect('/orders');
         // dd($result);
     }
     public function GetNewOrderID($price)
     {
         $order = new Order();
-        $order->totalPrice = $price;
+        $order->totalHarga = $price;
         $order->save();
         return $order->id;
     }
     public function StoreData($data, $orderID)
     {
         foreach ($data as $menuItem) {
-            // Create a new instance of OrderMenu model
             $orderMenu = new order_menu();
     
-            // Assign values from the array
-            $orderMenu->order_id = $orderID; // If $order_id is available
+            $orderMenu->order_id = $orderID;
             $orderMenu->menu_id = $menuItem[0];
-            $orderMenu->menu_price = $menuItem[2];
-            $orderMenu->qty = $menuItem[3];
-    
-            // Save the order menu item to the database
+            $orderMenu->menu_nama = (string)$menuItem[1];
+            $orderMenu->menu_harga = $menuItem[2];
+            $orderMenu->menu_qty = $menuItem[3];
+            // dd($orderMenu);
             $orderMenu->save();
         }
+
         
     }
 }

@@ -16,8 +16,9 @@ return new class extends Migration
             // $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('order_id')->nullable();
             $table->unsignedBigInteger('menu_id')->nullable();
-            $table->unsignedBigInteger('menu_price');
-            $table->unsignedBigInteger('qty');
+            $table->string('menu_nama');
+            $table->unsignedBigInteger('menu_harga');
+            $table->unsignedBigInteger('menu_qty');
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('set null');
             $table->foreign('menu_id')->references('id')->on('menus')->onDelete('set null');

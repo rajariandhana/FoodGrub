@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('totalPrice');
+            $table->unsignedBigInteger('totalHarga');
             $table->timestamps();
         });
     }

@@ -15,6 +15,10 @@ class Menu extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function orderMenus()
+    {
+        return $this->hasMany(order_menu::class);
+    }
 
     // private static $daftar_menu = [
     //     [

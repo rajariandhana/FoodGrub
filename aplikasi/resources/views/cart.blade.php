@@ -16,10 +16,6 @@
     </div>
     {{-- <input type="text" id="myInput"> --}}
     {{-- <button onclick="appendToInput()">Append to Input</button> --}}
-    <form action="/ses">
-        <button class="green" id="">ses</button>
-    </form>
-
 </div>
 
 <table class="cartTable" id="cartTable">
