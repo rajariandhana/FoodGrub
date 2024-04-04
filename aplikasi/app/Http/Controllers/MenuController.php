@@ -36,6 +36,7 @@ class MenuController extends Controller
             'nama'=>'required',
             'harga'=>'required',
             'desc'=>'required',
+            'category_id'=>'required',
         ],
         [
             'nama.required'=>'nama tidak boleh kosong',
@@ -47,8 +48,9 @@ class MenuController extends Controller
             'nama'=>$request->nama,
             'harga'=>$request->harga,
             'desc' => $request->desc,
+            'category_id'=>$request->category_id,
         ]);
-        return redirect('/menus');
+        return redirect('/edit_category/'. $request->category_id);
     }
 
     public function update_menu(Request $request, $id)
@@ -67,10 +69,18 @@ class MenuController extends Controller
         $new_data = [
             'nama'=>$request->nama,
             'harga'=>$request->harga,
-            'desc'=>$request->desc
+            'desc'=>$request->desc,
+            'category'=>$request->category_id,
         ];
         $menu->update($new_data);
-        return redirect('\menus');
+        return back();
+    }
+
+    public function delete_menu($id)
+    {
+        $menu = Menu::findorfail($id);
+        $menu->delete();
+        return back();
     }
 
     // public function show($slug)
