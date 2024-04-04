@@ -77,6 +77,7 @@ Route::post('/removefromcart/{menu_id}',[OrderController::class,'RemoveFromCart'
 
 // Route::view('/welcome','welcome');
 // Route::view('/welcome','welcome',['name'=>'orang']);
-
-        Route::post('/create_menu',[MenuController::class, 'create_menu']);
-        Route::put('/update_menu/{menu_id}',[MenuController::class, 'update_menu']);
+ 
+Route::post('/create_menu',[MenuController::class, 'create_menu']);
+Route::put('/update_menu/{menu_id}',[MenuController::class, 'update_menu']);
+Route::delete('/delete_menu/{menu_id}',[MenuController::class,'delete_menu']);
