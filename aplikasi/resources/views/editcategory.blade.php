@@ -88,7 +88,7 @@
                         @enderror
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="harga" placeholder="price">
+                        <input type="number" class="form-control" name="harga" placeholder="price">
                         @error('price')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -106,13 +106,27 @@
                     </td>
                     <td><button type="submit" class="button-create">Creat Edit Menu</button></td>
                 </form>
-                <form id="editForm" action="/update_menu/" method="POST" enctype="multipart/form-data">@csrf @method('+put+')
+                <form id="editForm" action="/update_menu/0" method="POST" enctype="multipart/form-data">@csrf @method('+put+')
                     @csrf
                     @method('put')
                     <input id="editNama" type="text" name="nama">
-                    <input id="editHarga" type="text" name="harga">
-                    <input id="editDesc" type="text" name="desc"><input id="editCatId" type="text" class="form-control" name="category_id" style="display: none">
+                    @error('nama')
+                        <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
+                    <input id="editHarga" type="number" name="harga">
+                    @error('harga')
+                        <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
+                    <input id="editDesc" type="text" name="desc">
+                    @error('desc')
+                        <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
+                    <input id="editCatId" type="text" class="form-control" name="category_id" style="display: none">
+                    @error('category_id')
+                        <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
                     <button type="submit" class="button-update">Save</button>
+                    
                 </form>
             <!--<tr>
             <form action="/create_menu" method="POST" enctype="multipart/form-data">
