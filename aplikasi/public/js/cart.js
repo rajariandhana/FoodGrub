@@ -4,14 +4,14 @@ if(document.readyState == 'loading')
 }
 else
 {
-    console.log("ashiap");
+    console.log("ready");
 }
 
 /*
     ['menu_id',nama,harga,qty]
 */
-var carttotal = document.querySelector('.carttotal');
-var carttable = document.querySelector('.carttable');
+var carttotal = document.querySelector('.cartTotal');
+var carttable = document.querySelector('.cartTable');
 var cartbody = carttable.querySelector('tbody');
 
 function PlusToCart(data)
@@ -44,12 +44,16 @@ function NewRow(data)
     var col5 = document.createElement('td');
     var plusButton = document.createElement('button');
     var minusButton = document.createElement('button');
+    col0.className = 'cartID';
+    col1.className = 'cartName';
     col2.className = 'cartHarga';
     col3.className = 'cartQty';
+    col4.className = 'changeValueCell';
+    col5.className = 'changeValueCell';
     // plusButton.className = 'plusButton';
-    plusButton.classList.add('pos');
+    plusButton.classList.add('green','button-changeValue');
     // minusButton.className = 'minusButton';
-    minusButton.classList.add('neg');
+    minusButton.classList.add('red','button-changeValue');
     col0.textContent = data[0];
     col1.textContent = data[1];
     col2.textContent = data[2];
@@ -94,7 +98,7 @@ function MinusFromCart(data)
 function EmptyCart()
 {
     while(cartbody.firstChild) cartbody.removeChild(cartbody.firstChild);
-    carttotal.textContent = 'Total: 0';
+    carttotal.textContent = 'Total: Rp 0';
 }
 
 function UpdateTotal()
@@ -107,5 +111,50 @@ function UpdateTotal()
         var qty = parseInt(row.cells[3].textContent, 10);
         total += harga*qty;
     }
-    carttotal.textContent = 'Total: '+total;
+    carttotal.textContent = 'Total: Rp '+total+'k';
 }
+
+
+function appendToInput() {
+    var appendedValue = " Additional Value"; // Value to be appended
+    var currentInputValue = document.getElementById("myInput").value; // Get current value
+    document.getElementById("myInput").value = currentInputValue + appendedValue; // Append the new value
+}
+sessionStorage.setItem("userData","a");
+
+function SumOrder()
+{
+    // console.log(cartbody.rows.length)
+    // if(cartbody.rows.length == 0) return;
+    var value="";
+    for(var i=0; i<cartbody.rows.length; i++)
+    {
+        var row = cartbody.rows[i];
+        var id = row.cells[0].textContent;
+        var nama = row.cells[1].textContent;
+        var harga = parseInt(row.cells[2].textContent, 10);
+        var qty = parseInt(row.cells[3].textContent, 10);
+        var curVal="["+id+"_"+nama+"_"+harga+"_"+qty+"]";
+        // total += harga*qty;
+        value+=curVal;
+    }
+    var orderInput = document.getElementById("orderInput");
+    orderInput.value = value;
+    document.getElementById("orderForm").submit();
+}
+/*
+Order
+ID
+totalPrice
+
+Order_Menu
+ID
+Order.ID
+Menu.ID
+qty
+
+Menu
+ID
+name
+price
+*/

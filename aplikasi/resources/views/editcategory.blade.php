@@ -1,23 +1,19 @@
 @extends('layout')
 
 @section('container')
-    <h3>{{ $category->nama }}</h3>
-    <div class="edit-category-header">
-        <form action="/update_category/{{$category->id}}" method="POST" enctype="multipart/form-data">
+    {{-- <h3>{{ $category->nama }}</h3> --}}
+    <div class="update-category">
+        <form action="/update_category/{{$category->id}}" method="POST" enctype="multipart/form-data"
+            class="input-submit">
             @csrf
             @method('put')
             <input type="text" name="nama" placeholder="category name">
-            <button type="submit" class="button-update">Update Category</button>
+            <button type="submit" class="orange">Update Category</button>
             @error('nama')
                 <div class="alert alert-danger">{{$message}}</div>
             @enderror
         </form>
-        <form id="deleteForm" action="/delete_category/{{$category->id}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('delete')
-            <button type="submit" class="button-delete"
-            onclick="return confirm('Are you sure you want to delete this category?')">Delete Category</button>
-        </form>
+        
     </div>
     <script>
         function editFields(MenuId) {
@@ -58,6 +54,7 @@
                 <th>Nama</th>
                 <th>Harga</th>
                 <th>Deskripsi</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -148,4 +145,10 @@
             </tr>-->
         </tbody>
     </table>
+    <form id="deleteForm" action="/delete_category/{{$category->id}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('delete')
+        <button type="submit" class="red"
+        onclick="return confirm('Are you sure you want to delete this category?')">Delete Category</button>
+    </form>
 @endsection

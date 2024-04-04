@@ -2,7 +2,11 @@ th, td
 {
     padding: 5px 10px;
 }
-
+.orderRow
+{
+    background-color: #ddd;
+    font-weight: bold;
+}
 
 .menuNama, .menuDesc
 {
@@ -13,22 +17,6 @@ th, td
 }
 .menuHarga
 {
-    width: 60px;
+    /* width: 60px; */
     text-align: center;
-}
-
-.addToCartCell
-{
-    padding: 0;
-}
-
-.categoryRow
-{
-    background-color: #ddd;
-}
-
-.button-addToCart
-{
-    width: 100%;
-    border-radius: 0;
 }

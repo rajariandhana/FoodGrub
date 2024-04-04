@@ -1,9 +1,64 @@
-.button-emptyCart
+.cartHeader
+{
+    display: flex;
+    flex-direction: column;
+}
+.cartTotal
 {
 
+}
+.cartSubmit
+{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+th, td
+{
+    padding: 5px 10px;
+}
+
+.cartTable thead tr th
+{
+    background-color: #ddd;
+}
+.cartID, .cartHarga, .cartQty
+{
+    text-align: center;
 }
 
 .cartID, .cartHarga, .cartQty
 {
-    text-align: center;
+    min-width: 30px;
+}
+
+.cartNama
+{
+    min-width: 300px;
+}
+
+.changeValueCell
+{
+    padding: 0;
+    min-width: 40px;
+}
+
+.button-changeValue
+{
+    border-radius: 0;
+    /* padding: 0; */
+    width: 100%;
+    /* height: 100%; */
+    /* margin: 0; */
+    /* height: 40px; */
+}
+
+.cartTable tr td:nth-child(1)
+{
+    display: none;
+}
+
+#orderInput
+{
+    display: none;
 }
