@@ -1,5 +1,9 @@
 @extends('layout')
-
+@section('css')
+<link rel="stylesheet" href="{{url('css/neworder.css')}}">
+<link rel="stylesheet" href="{{url('css/menulist.css')}}">
+<link rel="stylesheet" href="{{url('css/cart.css')}}">
+@endsection
 @section('container')
     <div class="newordercontainer">
         <div class="neworder">

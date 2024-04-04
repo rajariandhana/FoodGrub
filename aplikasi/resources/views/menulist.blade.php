@@ -17,7 +17,7 @@
                     <td class="menuHarga">{{ $menu->harga }}</td>
                     <td class="addToCartCell">
                         <button onclick="PlusToCart([{{$menu->id}},'{{$menu->nama}}',{{$menu->harga}}])"
-                            class="button-addToCart pos"
+                            class="button-addToCart green"
                             >Add</button>
                     </td>
                 </tr>

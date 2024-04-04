@@ -1,17 +1,32 @@
-<h1>Shopping Cart</h1>
-<div class="carttotal">
-    Total: 0
+{{-- <h1>Shopping Cart</h1> --}}
+<div class="cartHeader">
+    <div class="cartTotal">
+        Total: Rp 0
+    </div>
+    <div class="cartSubmit" id="carte">
+        <form action="/create_order" method="POST" enctype="multipart/form-data"
+            class="input-submit" id="orderForm">
+            @csrf
+            <button class="green" id="button-createOrder"
+            onclick="SumOrder()"
+            >Create Order</button>
+            <input type="text" name="myOrder" id="orderInput" value="">
+        </form>
+        <button onclick="EmptyCart()" class="red">Empty Cart</button>
+    </div>
+    {{-- <input type="text" id="myInput"> --}}
+    {{-- <button onclick="appendToInput()">Append to Input</button> --}}
 </div>
-<button onclick="EmptyCart()" class="button-emptyCart neg">Empty Cart</button>
-<table class="carttable">
+
+<table class="cartTable" id="cartTable">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nama</th>
+            {{-- <th class="cartID">ID</th> --}}
+            <th class="cartNama">Nama</th>
             <th class="cartHarga">Harga</th>
             <th class="cartQty">Qty</th>
-            <th class="cartPlus"></th>
-            <th class="cartMinus"></th>
+            <th class="changeValueCell"></th>
+            <th class="changeValueCell"></th>
         </tr>
     </thead>
     <tbody>

@@ -12,16 +12,19 @@ header
     gap: 2em;
 }
 
-table {
+table
+{
     /* width: 100%; */
     border-collapse: collapse;
 }
-th, td {
+th, td
+{
     border: 1px solid #ddd;
     /* padding: 8px; */
     text-align: left;
 }
-th {
+th
+{
     background-color: #f2f2f2;
 }
 .categoryName
@@ -44,72 +47,59 @@ th {
 } */
 
 
-.pos
+.green
 {
     background-color: #00CA4E;
+    color: white;
 }
-.neg
+.red
 {
     background-color: #FF605C;
+    color: white;
 }
-
-.menuRow
+.orange
 {
-    padding: 0;
+    background-color: #FFBD44;
+    color: white;
 }
-.menuRow td:last-child
+.edit
 {
-    /* flex-grow: 1; */
-    padding: 0;
-}
-
-.addToCartButton
-{
-    background-color: #00CA4E;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.addToCartCell
-{
-    padding: 0;
+    padding: 5px 5px;
+    border-radius: 5px;
 }
 
 button
 {
-    border: none;
     color: white;
+    border: none;
+    border-radius: 10px;
     text-align: center;
     text-decoration: none;
     padding: 10px 10px;
     font-size: 1em;
 }
+
 button:hover
 {
     cursor: pointer;
-}
-.button-create
-{
-    background-color: #00CA4E;
-}
-.button-update
-{
-    background-color: #FFBD44;
-}
-.button-delete
-{
-    background-color: #FF605C;
+    opacity: 90%;
 }
 
-.neworder
-{
-    /* background-color: #b09b73; */
+ .input-submit
+ {
     display: flex;
     flex-direction: row;
-}
+    gap: 10px;
+ }
 
-.carttable tr td:nth-child(1)
+ input[type=text], select
 {
-    /* display: none; */
-}
+    /* width: 100%; */
+    min-width: 300px;
+    padding: 10px 10px;
+    font-size: 1em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
