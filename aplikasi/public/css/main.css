@@ -85,21 +85,21 @@ button:hover
     opacity: 90%;
 }
 
- .input-submit
- {
+.input-submit
+{
     display: flex;
     flex-direction: row;
     gap: 10px;
- }
+}
 
- input[type=text], select
+input[type=text], select
 {
     /* width: 100%; */
-    min-width: 300px;
+    /* min-width: 300px; */
     padding: 10px 10px;
     font-size: 1em;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
-  }
+}
