@@ -72,13 +72,13 @@
                     <td class="menuHarga" id="harga{{ $menu->id }}">{{ $menu->harga }}</td>
                     <td class="menuDesc" id="desc{{ $menu->id }}">{{ $menu->desc }}</td>
                     <td>
-                        <formv id="deleteForm" action="/delete_menu/{{ $menu->id }}" method="POST"
+                        <form id="deleteForm" action="/delete_menu/{{ $menu->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('delete')
                             <button type="submit" class="red"
                                 onclick="return confirm('Are you sure you want to delete this menu?')">Delete Menu</button>
-                        </formv>
+                        </form>
                     </td>
                     <td id ="editButton{{ $menu->id }}"><button onclick="edit('{{ $menu->id }}')"
                             class="orange">Edit</button></td>
