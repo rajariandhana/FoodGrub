@@ -57,7 +57,8 @@ Route::post('/create_category',[CategoryController::class,'create_category']);
 Route::put('/update_category/{category_id}',[CategoryController::class,'update_category']);
 Route::delete('/delete_category/{category_id}',[CategoryController::class,'delete_category']);
 
-Route::get('/neworder', [OrderController::class, 'index']);
+Route::get('/neworder', [OrderController::class, 'neworder']);
+Route::get('/orders', [OrderController::class, 'orders']);
 
 Route::post('/addtocart/{menu_id}',[OrderController::class,'AddToCart']);
 Route::post('/removefromcart/{menu_id}',[OrderController::class,'RemoveFromCart']);
