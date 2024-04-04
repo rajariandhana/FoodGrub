@@ -3,18 +3,33 @@ th, td
     padding: 5px 10px;
 }
 
+.input-create
+{
+    /* max-width: 100%; */
+    padding: 10px 5px;
+    width: 100%;
+    font-size: 1em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
 
 .menuNama, .menuDesc
 {
     min-width: 300px;
     padding: 5px 10px;
-
-    /* background-color: red; */
 }
-.menuHarga
+.menuHarga, .menuHarga .input-create
 {
     width: 60px;
     text-align: center;
+}
+
+.menuCRUD button
+{
+    width: 100%;
+    /* background-color: red; */
 }
 
 .addToCartCell
