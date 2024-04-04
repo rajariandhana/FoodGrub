@@ -71,7 +71,7 @@
                     <td class="menuNama" id="nama{{ $menu->id }}">{{ $menu->nama }}</td>
                     <td class="menuHarga" id="harga{{ $menu->id }}">{{ $menu->harga }}</td>
                     <td class="menuDesc" id="desc{{ $menu->id }}">{{ $menu->desc }}</td>
-                    <td>
+                    <td class="menuCRUD">
                         <form id="deleteForm" action="/delete_menu/{{ $menu->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
@@ -80,10 +80,36 @@
                                 onclick="return confirm('Are you sure you want to delete this menu?')">Delete Menu</button>
                         </form>
                     </td>
-                    <td id ="editButton{{ $menu->id }}"><button onclick="edit('{{ $menu->id }}')"
+                    <td class="menuCRUD" id ="editButton{{ $menu->id }}"><button onclick="edit('{{ $menu->id }}')"
                             class="orange">Edit</button></td>
                 </tr>
             @endforeach
+            
+            <tr>
+                <form id="editForm" action="/update_menu/" method="POST" enctype="multipart/form-data">@csrf
+                    @method('+put+')
+                    @csrf
+                    @method('put')
+
+                    <td class="menuNama">
+                        <input class="input-create" id="editNama" type="text" name="nama">
+                    </td>
+                    <td class="menuHarga">
+                        <input class="input-create" id="editHarga" type="text" name="harga">
+                    </td>
+                    <td class="menuDesc">
+                        <input class="input-create" id="editDesc" type="text" name="desc">
+                    </td>
+                    <td class="menuCRUD">
+                        <button type="submit" class="green">Save</button>
+                    </td>
+                    <td class="menuCRUD">
+                        <input id="editCatId" type="text" class="form-control" name="category_id" style="display: none">
+                    </td>
+                    
+
+                </form>
+            </tr>
             <tr>
                 <form action="/create_menu" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -116,32 +142,8 @@
                         <input id="editCatId" type="text" class="form-control" value="{{ $category->id }}"
                             name="category_id" style="display: none">
                     </td>
-                    <td><button type="submit" class="green">Create Menu</button></td>
-
-                </form>
-            </tr>
-            <tr>
-                <form id="editForm" action="/update_menu/" method="POST" enctype="multipart/form-data">@csrf
-                    @method('+put+')
-                    @csrf
-                    @method('put')
-
-                    <td class="menuNama">
-                        <input class="input-create" id="editNama" type="text" name="nama">
-                    </td>
-                    <td class="menuHarga">
-                        <input class="input-create" id="editHarga" type="text" name="harga">
-                    </td>
-                    <td class="menuDesc">
-                        <input class="input-create" id="editDesc" type="text" name="desc">
-                    </td>
-                    <td>
-                        <input id="editCatId" type="text" class="form-control" name="category_id" style="display: none">
-                    </td>
-                    <td>
-                        <button type="submit" class="green">Save</button>
-                    </td>
-
+                    <td class="menuCRUD"><button type="submit" class="green">Create Menu</button></td>
+                    <td></td>
                 </form>
             </tr>
             <!--<tr>

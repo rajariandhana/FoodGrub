@@ -26,6 +26,12 @@ th, td
     text-align: center;
 }
 
+.menuCRUD button
+{
+    width: 100%;
+    /* background-color: red; */
+}
+
 .addToCartCell
 {
     padding: 0;
