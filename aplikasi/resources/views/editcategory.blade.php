@@ -9,8 +9,8 @@
         <form action="/update_category/{{ $category->id }}" method="POST" enctype="multipart/form-data" class="input-submit">
             @csrf
             @method('put')
-            <input type="text" name="nama" placeholder="category name">
-            <button type="submit" class="orange">Update Category</button>
+            <input class="menuNama" type="text" name="nama" placeholder="New Category Name">
+            <button type="submit" class="orange">Change Category Name</button>
             @error('nama')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -84,49 +84,40 @@
                             class="orange">Edit</button></td>
                 </tr>
             @endforeach
-            
+
             <tr>
-                <form id="editForm" action="/update_menu/" method="POST" enctype="multipart/form-data">@csrf
+                <form id="editForm" action="/update_menu/0" method="POST" enctype="multipart/form-data">@csrf
                     @method('+put+')
                     @csrf
                     @method('put')
-
                     <td class="menuNama">
                         <input class="input-create" id="editNama" type="text" name="nama">
                     </td>
+                    @error('nama')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <td class="menuHarga">
-                        <input class="input-create" type="number" class="form-control" name="harga" placeholder="price">
-                        @error('price')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input class="input-create" id="editHarga" type="number" name="harga">
                     </td>
+                    @error('harga')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <td class="menuDesc">
                         <input class="input-create" id="editDesc" type="text" name="desc">
                     </td>
-                    <td class="menuCRUD"><button type="submit" class="button-create">Creat Edit Menu</button></td>
-                </form>
-                <form id="editForm" action="/update_menu/0" method="POST" enctype="multipart/form-data">@csrf @method('+put+')
-                    @csrf
-                    @method('put')
-                    <input id="editNama" type="text" name="nama">
-                    @error('nama')
-                        <div class="alert alert-danger">{{$message}}</div>
-                    @enderror
-                    <input id="editHarga" type="number" name="harga">
-                    @error('harga')
-                        <div class="alert alert-danger">{{$message}}</div>
-                    @enderror
-                    <input id="editDesc" type="text" name="desc">
                     @error('desc')
-                        <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <input id="editCatId" type="text" class="form-control" name="category_id" style="display: none">
+                    <td class="menuCRUD">
+                        <button type="submit" class="green">Save</button>
+                    </td>
+                    <td>
+                        <input id="editCatId" type="text" class="form-control" name="category_id" style="display: none">
+                    </td>
                     @error('category_id')
-                        <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <button type="submit" class="button-update">Save</button>
+
                 </form>
             </tr>
             <tr>
@@ -143,7 +134,7 @@
                         @enderror
                     </td>
                     <td class="menuHarga">
-                        <input class="input-create" type="text" class="form-control" name="harga" placeholder="price">
+                        <input class="input-create" type="text" class="form-control" name="harga" placeholder="Price">
                         @error('price')
                             <div class="alert alert-danger">
                                 {{ $message }}
@@ -166,37 +157,37 @@
                 </form>
             </tr>
             <!--<tr>
-                            <form action="/create_menu" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <td>
-                                        <input type="text" class="form-control" name="nama" placeholder="Enter Name">
-                                        @error('nama')
+                                    <form action="/create_menu" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <td>
+                                                <input type="text" class="form-control" name="nama" placeholder="Enter Name">
+                                                @error('nama')
         <div class="alert alert-danger">
-                                                                {{ $message }}
-                                                            </div>
+                                                                                {{ $message }}
+                                                                            </div>
     @enderror
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" name="harga" placeholder="price">
-                                        @error('price')
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="harga" placeholder="price">
+                                                @error('price')
         <div class="alert alert-danger">
-                                                                {{ $message }}
-                                                            </div>
+                                                                                {{ $message }}
+                                                                            </div>
     @enderror
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" name="desc" placeholder="Enter description">
-                                        @error('description')
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="desc" placeholder="Enter description">
+                                                @error('description')
         <div class="alert alert-danger">
-                                                                {{ $message }}
-                                                            </div>
+                                                                                {{ $message }}
+                                                                            </div>
     @enderror
-                                        <input type="text" class="form-control" value="{{ $category->id }}" name="category_id" style="display: none">
-                                        
-                                    </td>
-                                    <td><button type="submit" class="button-create">Create Menu</button></td>
-                                </form>
-                            </tr>-->
+                                                <input type="text" class="form-control" value="{{ $category->id }}" name="category_id" style="display: none">
+                                                
+                                            </td>
+                                            <td><button type="submit" class="button-create">Create Menu</button></td>
+                                        </form>
+                                    </tr>-->
         </tbody>
     </table>
     <form id="deleteForm" action="/delete_category/{{ $category->id }}" method="POST" enctype="multipart/form-data">

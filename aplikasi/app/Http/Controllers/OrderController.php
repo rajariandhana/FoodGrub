@@ -38,7 +38,7 @@ class OrderController extends Controller
         }
 
         return view('orders', [
-            'namaHalaman' => 'Orders',
+            'namaHalaman' => 'Order History',
             'orders' => $orders
         ]);
     }

@@ -3,13 +3,65 @@
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
 }
+body
+{
+    /* margin: 0 60px; */
+}
+
+
+
+nav
+{
+    margin: 1em 3em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav a
+{
+    color: white;
+    font-weight: bold;
+}
+.left, .right
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left
+{
+    gap: 1em;
+}
+
+.right
+{
+    gap: 2em;
+}
+
+.left a, .right a
+{
+    /* background-color: red; */
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+.left a:hover, .right a:hover
+{
+    background-color: white;
+    color: coral;
+}
+.right a:last-child
+{
+    background-color: #00CA4E;
+    color: white;
+}
 
 header
 {
-    background-color: orange;
+    background-color: coral;
     display: flex;
     align-items: center;
-    gap: 2em;
 }
 
 table
@@ -92,7 +144,7 @@ button:hover
     gap: 10px;
 }
 
-input[type=text], select
+input[type=text],input[type=number], select
 {
     /* width: 100%; */
     /* min-width: 300px; */
