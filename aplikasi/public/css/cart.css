@@ -1,11 +1,13 @@
 .cartHeader
 {
+    /* background-color: red; */
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 .cartTotal
 {
-
+    font-size: 2em;
 }
 .cartSubmit
 {
@@ -17,10 +19,14 @@ th, td
 {
     padding: 5px 10px;
 }
-
+.cartTable
+{
+    margin-top: 20px;
+}
 .cartTable thead tr th
 {
-    background-color: #ddd;
+    /* background-color: #ddd; */
+    /* background-color: var(--grey1); */
 }
 .cartID, .cartHarga, .cartQty
 {
