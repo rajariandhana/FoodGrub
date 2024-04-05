@@ -59,6 +59,7 @@ Route::delete('/delete_category/{category_id}',[CategoryController::class,'delet
 
 Route::get('/neworder', [OrderController::class, 'neworder']);
 Route::get('/orders', [OrderController::class, 'orders']);
+// Route::get('/orders/{order}', [OrderController::class, 'orders']);
 
 Route::post('/addtocart/{menu_id}',[OrderController::class,'AddToCart']);
 Route::post('/removefromcart/{menu_id}',[OrderController::class,'RemoveFromCart']);
