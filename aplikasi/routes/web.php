@@ -72,3 +72,9 @@ Route::post('/create_order', [OrderController::class, 'CreateOrder']);
 Route::post('/create_menu',[MenuController::class, 'create_menu']);
 Route::put('/update_menu/{menu_id}',[MenuController::class, 'update_menu']);
 Route::delete('/delete_menu/{menu_id}',[MenuController::class,'delete_menu']);
+
+Route::get('/test', function () {
+    return view('test',[
+        'namaHalaman'=>'test'
+    ]);
+});

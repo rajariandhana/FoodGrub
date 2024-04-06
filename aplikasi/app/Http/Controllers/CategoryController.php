@@ -51,15 +51,15 @@ class CategoryController extends Controller
     public function update_category(Request $request, $id)
     {
         $request->validate([
-            'nama'=>'required',
+            'namaCategory'=>'required',
         ],
         [
-            'nama.required'=>'nama tidak boleh kosong',
+            'namaCategory.required'=>'nama tidak boleh kosong',
         ]);
         $category = Category::findorfail($id);
         $new_data = [
-            'nama'=>$request->nama,
-            'slug'=>$request->nama,
+            'nama'=>$request->namaCategory,
+            'slug'=>$request->namaCategory,
         ];
         $category->update($new_data);
         return redirect('/menus');

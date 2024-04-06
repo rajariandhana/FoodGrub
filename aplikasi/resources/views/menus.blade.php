@@ -5,7 +5,7 @@
 @section('container')
     <form action="/create_category" method="POST" enctype="multipart/form-data" class="input-submit">
         @csrf
-        <input type="text" name="nama" placeholder="category name">
+        <input type="text" name="nama" placeholder="Category Name">
         <button type="submit" class="green">Create Category</button>
         @error('nama')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -21,13 +21,13 @@
         <tbody>
             @foreach ($categories as $category)
                 <tr class="categoryRow">
-                    <td class="categoryName">
+                    <td class="menuName">
                         {{ $category->nama }}
                         <button onclick="window.location.href = '/edit_category/{{ $category->id }}';"
                             class="edit orange">Edit</button>
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td class="menuHarga">Price</td>
+                    <td class="menuDesc">Description</td>
                 </tr>
                 @foreach ($category->menus as $menu)
                     <tr class="menuRow">
@@ -36,6 +36,11 @@
                         <td class="menuDesc">{{ $menu->desc }}</td>
                     </tr>
                 @endforeach
+                <tr class="row-dummy">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             @endforeach
         </tbody>
     </table>
