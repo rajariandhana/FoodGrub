@@ -33,19 +33,19 @@ class MenuController extends Controller
     public function create_menu(Request $request)
     {
         $request->validate([
-            'nama'=>'required',
+            'namaMenu'=>'required',
             'harga'=>'required',
             'desc'=>'required',
             'category_id'=>'required',
         ],
         [
-            'nama.required'=>'nama tidak boleh kosong',
+            'namaMenu.required'=>'nama tidak boleh kosong',
             'harga.required'=>'harga tidak boleh kosong',
             'desc.required'=>'deskripsi tidak boleh kosong',
             
         ]);
         Menu::create([
-            'nama'=>$request->nama,
+            'nama'=>$request->namaMenu,
             'harga'=>$request->harga,
             'desc' => $request->desc,
             'category_id'=>$request->category_id,

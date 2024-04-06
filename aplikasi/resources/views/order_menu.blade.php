@@ -2,8 +2,8 @@
 
 <table>
     <thead>
-        <th>Nama</th>
-        <th>Harga</th>
+        <th>Name</th>
+        <th>Price</th>
         <th>Qty</th>
     </thead>
     <tbody>

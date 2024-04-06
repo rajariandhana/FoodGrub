@@ -9,9 +9,9 @@
         <form action="/update_category/{{ $category->id }}" method="POST" enctype="multipart/form-data" class="input-submit">
             @csrf
             @method('put')
-            <input class="menuNama" type="text" name="nama" placeholder="New Category Name">
+            <input class="menuNama" type="text" name="namaCategory" placeholder="New Category Name">
             <button type="submit" class="orange">Change Category Name</button>
-            @error('nama')
+            @error('namaCategory')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </form>
@@ -58,9 +58,9 @@
     <table>
         <thead>
             <tr>
-                <th class="menuNama">Nama</th>
-                <th class="menuHarga">Harga</th>
-                <th class="menuDesc">Deskripsi</th>
+                <th class="menuNama">{{$category->nama}}</th>
+                <th class="menuHarga">Price</th>
+                <th class="menuDesc">Description</th>
                 <th class=""></th>
                 <th class=""></th>
             </tr>
@@ -125,9 +125,9 @@
                     @csrf
 
                     <td class="menuNama">
-                        <input class="input-create" type="text" class="form-control" name="nama"
+                        <input class="input-create" type="text" class="form-control" name="namaMenu"
                             placeholder="Enter Name">
-                        @error('nama')
+                        @error('namaMenu')
                             <div class="alert alert-danger">
                                 {{ $message }}
                             </div>

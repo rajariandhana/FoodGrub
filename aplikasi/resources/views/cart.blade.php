@@ -22,8 +22,8 @@
     <thead>
         <tr>
             {{-- <th class="cartID">ID</th> --}}
-            <th class="cartNama">Nama</th>
-            <th class="cartHarga">Harga</th>
+            <th class="cartNama">Name</th>
+            <th class="cartHarga">Price</th>
             <th class="cartQty">Qty</th>
             <th class="changeValueCell"></th>
             <th class="changeValueCell"></th>
