@@ -20,3 +20,8 @@ th, td
     /* width: 60px; */
     text-align: center;
 }
+
+.orderWaktu, .orderHarga
+{
+    text-align: center;
+}

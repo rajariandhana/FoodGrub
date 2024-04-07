@@ -11,14 +11,8 @@ use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
-    public function neworder()
-    {
-        // Session::flush();
-        // Session::forget('cart');
-        // $cart = Session::get('cart', []); // Get cart from session, default to empty array if not exists
-        // Session::put('cart',[]);
-        // session_start();
-        
+    public function NewOrder()
+    {   
         return view('neworder',[
             'namaHalaman'=>'New Order',
             'categories'=>Category::all()
@@ -29,13 +23,13 @@ class OrderController extends Controller
     public function Orders()
     {
         // $orders = Order::with('orderMenus.menu')->get();
-        $orders = Order::all();
-        foreach($orders as $order)
-        {
-            $order->menus = order_menu::where('order_id',$order->id)->get();
-            // $category->menus = Menu::where('category_id', $category->id)->get();
+        $orders = Order::orderByDesc('created_at')->get();
+        // foreach($orders as $order)
+        // {
+        //     $order->menus = order_menu::where('order_id',$order->id)->get();
+        //     // $category->menus = Menu::where('category_id', $category->id)->get();
 
-        }
+        // }
 
         return view('orders', [
             'namaHalaman' => 'Order History',
@@ -43,64 +37,21 @@ class OrderController extends Controller
         ]);
     }
 
-    public function AddToCart($id)
+    public function ShowOrder(Request $request)
     {
-        $key = 'menu_'.$id;
-        // if(Session::has($key))
-        // {
-        //     $val = Session::get($key);
-        //     $val++;
-        //     Session::put($key,$val);
-        // }
-        // else
-        // {
-        //     Session::put($key,1);
-        // }
-        // return redirect()->back()->with('success', 'Product added to cart successfully!');
-
-        $cart = Session::get('cart', []); // Get cart from session, default to empty array if not exists
-        if (isset($cart[$key])) {
-            $cart[$key]++; // Increment quantity if product exists
-        } else {
-            $cart[$key] = 1; // Set quantity to 1 if product doesn't exist
-        }
-        Session::put('cart', $cart); // Update cart in session
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        // $order->menus = order_menu::where('order_id',$request->order_id)->get();
+        // $order_id = $request->order_id;
+        // $orders = Order::with('orderMenus.menu')->get();
+        $order = Order::findOrFail($request->order_id);
+        $menus = $order->orderMenus()->with('menu')->get();
+        return view('order_menu',[
+            'namaHalaman'=>'Order',
+            'order'=>$order,
+            'menus'=>$menus,
+            // 'daftarmenu'=>Category::tipe()
+        ]);
     }
 
-    public function RemoveFromCart($id)
-    {
-        $key = 'menu_'.$id;
-        // if(Session::has($key))
-        // {
-        //     $val = Session::get($key);
-        //     $val--;
-        //     if($val<=0) Session::forget($key);
-        //     }
-        //     else
-        //     {
-        //         Session::put($key,$val);
-        //     }
-        // }
-        // return redirect()->back()->with('success', 'Product removed from cart successfully!');
-        $cart = Session::get('cart', []);
-        if (isset($cart[$key])) {
-            $cart[$key]--;
-            if ($cart[$key] <= 0) {
-                unset($cart[$key]); // Remove product from cart if quantity becomes zero or less
-            }
-            Session::put('cart', $cart); // Update cart in session
-            return redirect()->back()->with('success', 'Product removed from cart successfully!');
-        }
-        return redirect()->back()->with('error', 'Product not found in cart!');
-    }
-
-    public function UpdateCart()
-    {
-        dd(
-            Session::all()
-        );
-    }
     public function CreateOrder(Request $request)
     {
         // $str = "[1_2_3][4_5_6][7_8_9]";

@@ -15,6 +15,6 @@ class Order extends Model
     // }
     public function orderMenus()
     {
-        return $this->hasMany(OrderMenu::class);
+        return $this->hasMany(order_menu::class);
     }
 }

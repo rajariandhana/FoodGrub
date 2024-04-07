@@ -102,6 +102,11 @@ th, td
     padding: 5px 5px;
     border-radius: 5px;
 }
+.prime1
+{
+    background-color: var(--red1);
+    color: white;
+}
 
 button
 {
