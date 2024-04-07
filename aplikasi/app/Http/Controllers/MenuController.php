@@ -33,19 +33,19 @@ class MenuController extends Controller
     public function create_menu(Request $request)
     {
         $request->validate([
-            'namaMenu'=>'required',
+            'nama'=>'required',
             'harga'=>'required',
             'desc'=>'required',
             'category_id'=>'required',
         ],
         [
-            'namaMenu.required'=>'nama tidak boleh kosong',
-            'harga.required'=>'harga tidak boleh kosong',
-            'desc.required'=>'deskripsi tidak boleh kosong',
+            'nama.required'=>'name cannot be empty',
+            'harga.required'=>'price cannot be empty',
+            'desc.required'=>'description cannot be empty',
             
         ]);
         Menu::create([
-            'nama'=>$request->namaMenu,
+            'nama'=>$request->nama,
             'harga'=>$request->harga,
             'desc' => $request->desc,
             'category_id'=>$request->category_id,
@@ -61,9 +61,9 @@ class MenuController extends Controller
             'desc'=>'required',
         ],
         [
-            'nama.required'=>'nama tidak boleh kosong',
-            'harga.required'=>'harga tidak boleh kosong',
-            'desc.required'=>'deskripsi tidak boleh kosong',
+            'nama.required'=>'name cannot be empty',
+            'harga.required'=>'price cannot be empty',
+            'desc.required'=>'description cannot be empty',
         ]);
         $menu = Menu::findorfail($id);
         $new_data = [

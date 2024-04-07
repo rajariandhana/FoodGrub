@@ -20,7 +20,7 @@ th, td
     min-width: 300px;
     padding: 5px 10px;
 }
-.menuHarga, .menuHarga .input-create
+.menuHarga, .menuHarga .input-create, .menuQty
 {
     width: 60px;
     text-align: center;

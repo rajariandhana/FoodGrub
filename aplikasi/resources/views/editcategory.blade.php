@@ -5,6 +5,10 @@
 
 @section('container')
     {{-- <h3>{{ $category->nama }}</h3> --}}
+    <div>
+        <button onclick="window.location.href = '/menus';" class="back">Back</button>
+
+    </div>
     <div class="update-category">
         <form action="/update_category/{{ $category->id }}" method="POST" enctype="multipart/form-data" class="input-submit">
             @csrf
@@ -58,7 +62,7 @@
     <table>
         <thead>
             <tr>
-                <th class="menuNama">{{$category->nama}}</th>
+                <th class="menuNama">{{ $category->nama }}</th>
                 <th class="menuHarga">Price</th>
                 <th class="menuDesc">Description</th>
                 <th class=""></th>
@@ -125,30 +129,15 @@
                     @csrf
 
                     <td class="menuNama">
-                        <input class="input-create" type="text" class="form-control" name="namaMenu"
-                            placeholder="Enter Name">
-                        @error('namaMenu')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input class="input-create" type="text" class="form-control" name="nama"
+                            placeholder="Menu name">
                     </td>
                     <td class="menuHarga">
                         <input class="input-create" type="text" class="form-control" name="harga" placeholder="Price">
-                        @error('price')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
                     </td>
                     <td class="menuDesc">
                         <input class="input-create" type="text" class="form-control" name="desc"
-                            placeholder="Enter description">
-                        @error('description')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                            placeholder="Menu description">
                         <input id="editCatId" type="text" class="form-control" value="{{ $category->id }}"
                             name="category_id" style="display: none">
                     </td>
@@ -156,38 +145,6 @@
                     <td></td>
                 </form>
             </tr>
-            <!--<tr>
-                                    <form action="/create_menu" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            <td>
-                                                <input type="text" class="form-control" name="nama" placeholder="Enter Name">
-                                                @error('nama')
-        <div class="alert alert-danger">
-                                                                                {{ $message }}
-                                                                            </div>
-    @enderror
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control" name="harga" placeholder="price">
-                                                @error('price')
-        <div class="alert alert-danger">
-                                                                                {{ $message }}
-                                                                            </div>
-    @enderror
-                                            </td>
-                                            <td>
-                                                <input type="text" class="form-control" name="desc" placeholder="Enter description">
-                                                @error('description')
-        <div class="alert alert-danger">
-                                                                                {{ $message }}
-                                                                            </div>
-    @enderror
-                                                <input type="text" class="form-control" value="{{ $category->id }}" name="category_id" style="display: none">
-                                                
-                                            </td>
-                                            <td><button type="submit" class="button-create">Create Menu</button></td>
-                                        </form>
-                                    </tr>-->
         </tbody>
     </table>
     <form id="deleteForm" action="/delete_category/{{ $category->id }}" method="POST" enctype="multipart/form-data">

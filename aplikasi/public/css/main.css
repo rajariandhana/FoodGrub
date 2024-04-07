@@ -45,8 +45,8 @@ body
 table
 {
     /* width: 100%; */
-    border-collapse: collapse;
     background-color: white;
+    border-collapse: collapse;
 }
 th, td
 {
@@ -106,6 +106,12 @@ th, td
 {
     background-color: var(--red1);
     color: white;
+}
+.back
+{
+    background-color: white;
+    color: var(--red1);
+    border: 1px solid var(--red1);
 }
 
 button

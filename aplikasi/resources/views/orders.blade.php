@@ -13,11 +13,12 @@
             <th></th>
         </thead>
         <tbody>
+            {{-- @dd($orders) --}}
             @foreach ($orders as $order)
             <a href="/order/{{$order}}">
                 <tr class="">
                     <td class="orderWaktu">{{ $order->created_at->format('Y') }}</td>
-                    <td class="orderWaktu">{{ $order->created_at->format('M') }}</td>
+                    <td class="orderWaktu">{{ $order->created_at->format('F') }}</td>
                     <td class="orderWaktu">{{ $order->created_at->format('d') }}</td>
                     <td class="orderWaktu">{{ $order->created_at->format('H:i:s') }}</td>
                     <td class="">Rp {{ $order->totalHarga }}k</td>
@@ -30,7 +31,4 @@
             @endforeach
         </tbody>
     </table>
-    {{-- @include('order_menu', ['order_menu' => $order]) --}}
-
-    
 @endsection

@@ -109,6 +109,9 @@ class DatabaseSeeder extends Seeder
         //     'harga'=>13,
         //     'desc'=>'desk',
         // ]);
+
+
+        // CREATE CATEGORY
         \App\Models\Category::create([
             'nama'=>'Menu Paket',
             'slug'=>'menu-paket',
@@ -135,7 +138,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
     
-        
+        // CREATE MENU
+        // MENU 1
         \App\Models\Menu::create([
             'category_id'=>1,
             'nama'=>'Paket Gacoan A',
@@ -162,7 +166,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
+        // MENU 2
         \App\Models\Menu::create([
             'category_id'=>2,
             'nama'=>'Combo Deals Gacoan A',
@@ -189,7 +193,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
+        // MENU 3
         \App\Models\Menu::create([
             'category_id'=>3,
             'nama'=>'Mie Suit',
@@ -210,7 +214,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
+        // MENU 4
         \App\Models\Menu::create([
             'category_id'=>4,
             'nama'=>'Udang Rambutan',
@@ -243,7 +247,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         
-
+        // MENU 5
         \App\Models\Menu::create([
             'category_id'=>5,
             'nama'=>'Es Gobak Sodor',
@@ -270,7 +274,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
+        // MENU 6
         \App\Models\Menu::create([
             'category_id'=>6,
             'nama'=>'Teh',
@@ -295,5 +299,105 @@ class DatabaseSeeder extends Seeder
             'harga'=>6,
             'desc'=>'',
         ]);
+
+
+        // CREATE ORDER
+        \App\Models\Order::create([
+            "id" => 1,
+            "totalHarga" => 160,
+            "created_at" => "2024-04-04 19:59:55",
+            "updated_at" => "2024-04-04 19:59:55",
+        ]);
+        \App\Models\Order::create([
+            "id" => 2,
+            "totalHarga" => 237,
+            "created_at" => "2024-04-04 20:00:04",
+            "updated_at" => "2024-04-04 20:00:04",
+        ]);
+
+
+        // ORDER 1
+        \App\Models\order_menu::Create([
+            "id" => 1,
+            "order_id" => 1,
+            "menu_id" => 1,
+            "menu_nama" => "Paket Gacoan A",
+            "menu_harga" => 40,
+            "menu_qty" => 1,
+            "created_at" => "2024-04-04 19:59:55",
+            "updated_at" => "2024-04-04 19:59:55",
+        ]);
+        \App\Models\order_menu::Create([
+            "id" => 2,
+            "order_id" => 1,
+            "menu_id" => 2,
+            "menu_nama" => "Paket Gacoan B",
+            "menu_harga" => 40,
+            "menu_qty" => 1,
+            "created_at" => "2024-04-04 19:59:55",
+            "updated_at" => "2024-04-04 19:59:55",
+        ]);
+        \App\Models\order_menu::Create([
+            "id" => 3,
+            "order_id" => 1,
+            "menu_id" => null,
+            "menu_nama" => "Paket Hompimpa A",
+            "menu_harga" => 40,
+            "menu_qty" => 1,
+            "created_at" => "2024-04-04 19:59:55",
+            "updated_at" => "2024-04-04 19:59:55",
+        ]);
+        \App\Models\order_menu::Create([
+            "id" => 4,
+            "order_id" => 1,
+            "menu_id" => 4,
+            "menu_nama" => "Paket Hompimpa B",
+            "menu_harga" => 40,
+            "menu_qty" => 1,
+            "created_at" => "2024-04-04 19:59:55",
+            "updated_at" => "2024-04-04 19:59:55",
+        ]);
+        
+        \App\Models\order_menu::Create([
+            "id" => 5,
+            "order_id" => 2,
+            "menu_id" => 5,
+            "menu_nama" => "Combo Deals Gacoan A",
+            "menu_harga" => 79,
+            "menu_qty" => 1,
+            "created_at" => "2024-04-04 20:00:04",
+            "updated_at" => "2024-04-04 20:00:04",
+        ]);
+        \App\Models\order_menu::Create([
+            "id" => 6,
+            "order_id" => 2,
+            "menu_id" => 6,
+            "menu_nama" => "Combo Deals Gacoan B",
+            "menu_harga" => 79,
+            "menu_qty" => 2,
+            "created_at" => "2024-04-04 20:00:04",
+            "updated_at" => "2024-04-04 20:00:04",
+        ]);
+        // \App\Models\order_menu::Create([
+            
+        // ]);
+        // \App\Models\order_menu::Create([
+            
+        // ]);
+        // \App\Models\order_menu::Create([
+            
+        // ]);
+        // \App\Models\order_menu::Create([
+            
+        // ]);
+        // \App\Models\order_menu::Create([
+            
+        // ]);
+        // \App\Models\order_menu::Create([
+            
+        // ]);
+        // \App\Models\order_menu::Create([
+            
+        // ]);
     }
 }

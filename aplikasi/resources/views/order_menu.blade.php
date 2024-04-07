@@ -1,10 +1,12 @@
 @extends('layout')
 @section('css')
     <link rel="stylesheet" href="{{ url('css/orders.css') }}">
+    <link rel="stylesheet" href="{{ url('css/menulist.css') }}">
 @endsection
 @section('container')
+    {{-- @dd($menus) --}}
     <div>
-        <button onclick="window.location.href = '/orders';" class="green">Back</button>
+        <button onclick="window.location.href = '/orders';" class="back">Back</button>
 
     </div>
     <table>
@@ -18,7 +20,7 @@
         <tbody>
             <tr>
                 <td class="orderWaktu">{{ $order->created_at->format('Y') }}</td>
-                <td class="orderWaktu">{{ $order->created_at->format('M') }}</td>
+                <td class="orderWaktu">{{ $order->created_at->format('F') }}</td>
                 <td class="orderWaktu">{{ $order->created_at->format('d') }}</td>
                 <td class="orderWaktu">{{ $order->created_at->format('H:i:s') }}</td>
                 <td class="">Rp {{ $order->totalHarga }}k</td>
@@ -27,15 +29,15 @@
     </table>
     <table>
         <thead>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Qty</th>
+            <th class="menuNama">Name</th>
+            <th class="menuHarga">Price</th>
+            <th class="menuQty">Qty</th>
         </thead>
         <tbody>
             @foreach ($menus as $menu)
-                <tr class="menuRow">
+                <tr>
                     <td class="menuNama">{{ $menu->menu_nama }}</td>
-                    <td class="menuHarga">{{ $menu->menu_harga }}</td>
+                    <td class="menuHarga">{{ $menu->menu_harga }}k</td>
                     <td class="menuQty">{{ $menu->menu_qty }}</td>
                 </tr>
             @endforeach

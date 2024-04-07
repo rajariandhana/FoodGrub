@@ -12,7 +12,7 @@
                 <td></td>
             </tr>
             @foreach ($category->menus as $menu)
-                <tr class="menuRow">
+                <tr class="">
                     <td class="menuNama">{{ $menu->nama }}</td>
                     <td class="menuHarga">{{ $menu->harga }}</td>
                     <td class="addToCartCell">

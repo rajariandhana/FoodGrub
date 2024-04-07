@@ -30,9 +30,9 @@
                     <td class="menuDesc">Description</td>
                 </tr>
                 @foreach ($category->menus as $menu)
-                    <tr class="menuRow">
+                    <tr class="">
                         <td class="menuNama">{{ $menu->nama }}</td>
-                        <td class="menuHarga">{{ $menu->harga }}</td>
+                        <td class="menuHarga">{{ $menu->harga }}k</td>
                         <td class="menuDesc">{{ $menu->desc }}</td>
                     </tr>
                 @endforeach
