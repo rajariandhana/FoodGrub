@@ -25,3 +25,14 @@ th, td
 {
     text-align: center;
 }
+
+.filter-date
+{
+    display: flex;
+    flex-direction: column;
+}
+.filter-date-between
+{
+    display: flex;
+    align-items: center;
+}
