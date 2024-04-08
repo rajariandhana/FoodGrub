@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\order_menu;
 use App\Models\Menu;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -20,16 +21,43 @@ class OrderController extends Controller
         ]);
     }
 
-    public function Orders()
+    public function Orders(Request $request)
     {
-        // $orders = Order::with('orderMenus.menu')->get();
-        $orders = Order::orderByDesc('created_at')->get();
-        // foreach($orders as $order)
-        // {
-        //     $order->menus = order_menu::where('order_id',$order->id)->get();
-        //     // $category->menus = Menu::where('category_id', $category->id)->get();
+        $orders = Order::orderByDesc('created_at');
 
-        // }
+        if ($request->has('date_start') && $request->has('date_end'))
+        {
+            $startDate = $request->date_start;
+            $endDate = $request->date_end;
+            $orders->whereDate('created_at', '>=', $startDate)
+                   ->whereDate('created_at', '<=', $endDate);
+        }
+
+        elseif ($request->has('template'))
+        {
+            switch ($request->template)
+            {
+                case 'thisday':
+                    $startDate = Carbon::today()->toDateString();
+                    $endDate = Carbon::today()->toDateString();
+                    break;
+                case 'thismonth':
+                    $startDate = Carbon::now()->startOfMonth()->toDateString();
+                    $endDate = Carbon::now()->endOfMonth()->toDateString();
+                    break;
+                case 'thisyear':
+                    $startDate = Carbon::now()->startOfYear()->toDateString();
+                    $endDate = Carbon::now()->endOfYear()->toDateString();
+                    break;
+                default:
+                    break;
+            }
+
+            $orders->whereDate('created_at', '>=', $startDate)
+                   ->whereDate('created_at', '<=', $endDate);
+        }
+
+        $orders = $orders->get();
 
         return view('orders', [
             'namaHalaman' => 'Order History',
