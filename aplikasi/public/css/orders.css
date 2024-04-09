@@ -30,9 +30,11 @@ th, td
 {
     display: flex;
     flex-direction: column;
+    gap: .5em;
 }
 .filter-date-between
 {
-    display: flex;
+    /* display: none; */
     align-items: center;
+    gap: .5em;
 }

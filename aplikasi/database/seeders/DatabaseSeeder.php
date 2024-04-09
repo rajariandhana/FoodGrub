@@ -301,13 +301,13 @@ class DatabaseSeeder extends Seeder
             'desc'=>'',
         ]);
 
-        for ($i = 1; $i <= 30; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             // Generate random date between 2022-01-01 and 2024-12-31
             // $randomDate = Carbon::createFromTimestamp(rand(1640995200, 1704105600))->toDateTimeString();
             // 2024 only
             // $randomDate = Carbon::createFromTimestamp(rand(1672531200, 1704067199))->toDateTimeString();
             // Generate random date between January 1, 2024, and December 31, 2024
-            $randomDate = Carbon::createFromTimestamp(mt_rand(Carbon::create(2024, 1, 1)->timestamp, Carbon::create(2024, 12, 31)->timestamp))->toDateTimeString();
+            $randomDate = Carbon::createFromTimestamp(mt_rand(Carbon::create(2023, 1, 1)->timestamp, Carbon::create(2024, 12, 31)->timestamp))->toDateTimeString();
 
             // Create order with random data
             $order = \App\Models\Order::create([
