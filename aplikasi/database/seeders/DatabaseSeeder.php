@@ -220,25 +220,25 @@ class DatabaseSeeder extends Seeder
             'category_id'=>4,
             'nama'=>'Udang Rambutan',
             'harga'=>13,
-            'desc'=>'',
+            'desc'=>'isi 3 pcs',
         ]);
         \App\Models\Menu::create([
             'category_id'=>4,
             'nama'=>'Udang Keju',
             'harga'=>13,
-            'desc'=>'',
+            'desc'=>'isi 3 pcs',
         ]);
         \App\Models\Menu::create([
             'category_id'=>4,
             'nama'=>'Lumpia Udang',
             'harga'=>13,
-            'desc'=>'',
+            'desc'=>'isi 3 pcs',
         ]);
         \App\Models\Menu::create([
             'category_id'=>4,
             'nama'=>'Pangsit Goreng',
             'harga'=>14,
-            'desc'=>'',
+            'desc'=>'isi 3 pcs',
         ]);
         \App\Models\Menu::create([
             'category_id'=>4,
@@ -280,25 +280,25 @@ class DatabaseSeeder extends Seeder
             'category_id'=>6,
             'nama'=>'Teh',
             'harga'=>6,
-            'desc'=>'',
+            'desc'=>'minuman',
         ]);
         \App\Models\Menu::create([
             'category_id'=>6,
             'nama'=>'Orange',
             'harga'=>7,
-            'desc'=>'',
+            'desc'=>'minuman',
         ]);
         \App\Models\Menu::create([
             'category_id'=>6,
             'nama'=>'Lemon Tea',
             'harga'=>9,
-            'desc'=>'',
+            'desc'=>'minuman',
         ]);
         \App\Models\Menu::create([
             'category_id'=>6,
             'nama'=>'Air Mineral',
             'harga'=>6,
-            'desc'=>'',
+            'desc'=>'minuman',
         ]);
 
         for ($i = 1; $i <= 50; $i++) {

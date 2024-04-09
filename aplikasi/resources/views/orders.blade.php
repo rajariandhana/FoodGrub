@@ -6,7 +6,7 @@
 {{-- 
     tambahin sum total price per filter
     --}}
-    <div>
+    <div class="filter">
         <form action="/orders" method="GET" enctype="multipart/form-data" class="filter-date" id="form-filter">
             <div>
                 <select onchange="FilterSelect()" name="filter_select" id="filter-select">
@@ -28,20 +28,22 @@
             </div>
 
         </form>
-        {{-- 
-    <form action="/orders" method="GET" enctype="multipart/form-data" class="filter-date" id="form-filter">
-        <div class="filter-date-template">
-            <label for="date_start">Show orders of</label>
-            <select name="template" id="">
-                <option value="thisday">Choose...</option>
-                <option value="thisday">Today</option>
-                <option value="thismonth">This Month</option>
-                <option value="thisyear">This Year</option>
-            </select>
-            <button type="submit" class="prime1">Show</button>
-        </div>
-    </form>
-     --}}
+    </div>
+    <div class="statistic">
+        <table>
+            <thead>
+                <thead>
+                    <th>Number of Orders</th>
+                    <th>Sum </th>
+                </thead>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>{{$orders_ctr}}</th>
+                    <th>Rp {{ number_format($orders_sum_totalHarga,0,',','.')}}</th>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div>
         <table>
@@ -59,6 +61,7 @@
                     <a href="/order/{{ $order }}">
                         <tr class="">
                             <td class="orderWaktu">{{ $order->created_at->format('Y') }}</td>
+                            {{-- <td class="orderWaktu">{{ $order->created_at->format('m') }}</td> --}}
                             <td class="orderWaktu">{{ $order->created_at->format('F') }}</td>
                             <td class="orderWaktu">{{ $order->created_at->format('d') }}</td>
                             <td class="orderWaktu">{{ $order->created_at->format('H:i:s') }}</td>

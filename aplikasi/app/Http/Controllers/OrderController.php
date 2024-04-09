@@ -61,10 +61,15 @@ class OrderController extends Controller
         }
         
         $orders = $orders->get();
+        $orders_ctr = $orders->count();
+        $orders_sum_totalHarga = $orders->sum('totalHarga');
+        $orders_sum_totalHarga *= 1000;
 
         return view('orders', [
             'namaHalaman' => 'Order History',
             'orders' => $orders,
+            'orders_ctr' => $orders_ctr,
+            'orders_sum_totalHarga' => $orders_sum_totalHarga,
         ]);
     }
 
