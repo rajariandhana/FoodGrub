@@ -450,5 +450,20 @@ class DatabaseSeeder extends Seeder
         // \App\Models\order_menu::Create([
             
         // ]);
+
+
+        // CREATE DISCOUNT
+        \App\Models\Discount::create([
+            'minimumBeli'=>100,
+            'potonganHarga'=>20,
+            'diskon_mulai'=>'2024-04-01',
+            'diskon_selesai'=>'2024-04-30',
+        ]);
+        \App\Models\Discount::create([
+            'minimumBeli'=>120,
+            'potonganHarga'=>30,
+            'diskon_mulai'=>'2024-03-01',
+            'diskon_selesai'=>'2024-03-31',
+        ]);
     }
 }

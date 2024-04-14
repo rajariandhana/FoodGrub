@@ -10,6 +10,7 @@ use App\Http\Controllers\TempController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\KategoriController;
 
 /*
@@ -73,6 +74,9 @@ Route::post('/create_order', [OrderController::class, 'CreateOrder']);
 Route::post('/create_menu',[MenuController::class, 'create_menu']);
 Route::put('/update_menu/{menu_id}',[MenuController::class, 'update_menu']);
 Route::delete('/delete_menu/{menu_id}',[MenuController::class,'delete_menu']);
+
+Route::get('/discount', [DiscountController::class, 'index']);
+
 
 Route::get('/test', function () {
     return view('test',[

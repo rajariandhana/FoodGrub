@@ -76,6 +76,9 @@
             </tbody>
         </table>
     </div>
+    {{-- <div>
+        {{$orders->links()}}
+    </div> --}}
     <script>
         function ClearFilter() {
             // document.getElementById("form-filter").reset();

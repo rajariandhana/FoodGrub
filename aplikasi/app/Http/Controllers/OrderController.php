@@ -9,6 +9,9 @@ use App\Models\order_menu;
 use App\Models\Menu;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
+// use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+// use Illuminate\View\View;
 
 class OrderController extends Controller
 {
@@ -61,6 +64,7 @@ class OrderController extends Controller
         }
         
         $orders = $orders->get();
+        // $orders = $orders->paginate(10);
         $orders_ctr = $orders->count();
         $orders_sum_totalHarga = $orders->sum('totalHarga');
         $orders_sum_totalHarga *= 1000;
