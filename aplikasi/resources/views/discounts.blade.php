@@ -1,30 +1,30 @@
 @extends('layout')
 @section('css')
-    <link rel="stylesheet" href="{{ url('css/discount.css') }}">
+    <link rel="stylesheet" href="{{ url('css/discounts.css') }}">
 @endsection
 @section('container')
     
 
     <table>
         <thead>
-            <th>Minimum Spending</th>
-            <th>Price Cut</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th></th>
+            <th class="diskonMinimum">Minimum Spending</th>
+            <th class="diskonPotongan">Price Cut</th>
+            <th class="diskonTanggal">Start Date</th>
+            <th class="diskonTanggal">End Date</th>
+            <th class="diskonCRUD"></th>
         </thead>
         <tbody>
             @foreach ($discounts as $discount)
                 <tr>
-                    <td>{{$discount->minimumBeli}}</td>
-                    <td>{{$discount->potonganHarga}}</td>
-                    <td>{{$discount->diskon_mulai}}</td>
-                    <td>{{$discount->diskon_selesai}}</td>
+                    <td class="diskonMinimum">{{$discount->minimumBeli}}</td>
+                    <td class="diskonPotongan">{{$discount->potonganHarga}}</td>
+                    <td class="diskonTanggal">{{$discount->diskon_mulai}}</td>
+                    <td class="diskonTanggal">{{$discount->diskon_selesai}}</td>
                     {{-- <td>
                         <button onclick="window.location.href = '/edit_discount/{{ $discount->id }}';"
                             class="edit orange">Edit</button>
                     </td> --}}
-                    <td>
+                    <td class="diskonCRUD">
                         <button onclick="window.location.href = '/delete_discount/{{ $discount->id }}';"
                             class="red">Delete</button>
                     </td>
@@ -32,19 +32,19 @@
             @endforeach
             <form action="/create_discount" method="POST" enctype="multipart/form-data">
                 @csrf
-                <td>
+                <td class="diskonMinimum">
                     <input type="number" class="form-control" name="minimumBeli" placeholder="Minimum spending">
                 </td>
-                <td>
+                <td class="diskonPotongan">
                     <input type="number" class="form-control" name="potonganHarga" placeholder="Price Cut">
                 </td>
-                <td>
+                <td class="diskonTanggal">
                     <input type="date" class="form-control" name="diskon_mulai" placeholder="Date Start">
                 </td>
-                <td>
+                <td class="diskonTanggal">
                     <input type="date" class="form-control" name="diskon_selesai" placeholder="Date End">
                 </td>
-                <td class="discountCRUD"><button type="submit" class="green">Create Discount</button></td>
+                <td class="diskonCRUD"><button type="submit" class="green">Create</button></td>
             </form>
         </tbody>
     </table>
