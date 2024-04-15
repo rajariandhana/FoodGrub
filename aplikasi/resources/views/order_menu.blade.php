@@ -15,6 +15,8 @@
             <th class="orderWaktu">Month</th>
             <th class="orderWaktu">Date</th>
             <th class="orderWaktu">Time</th>
+            <th class="orderHarga">Cart Price</th>
+            <th class="orderHarga">Price Cut</th>
             <th class="orderHarga">Total Price</th>
         </thead>
         <tbody>
@@ -23,6 +25,8 @@
                 <td class="orderWaktu">{{ $order->created_at->format('F') }}</td>
                 <td class="orderWaktu">{{ $order->created_at->format('d') }}</td>
                 <td class="orderWaktu">{{ $order->created_at->format('H:i:s') }}</td>
+                <td class="">Rp {{ $order->keranjangHarga }}k</td>
+                <td class="">Rp {{ $order->potonganHarga }}k</td>
                 <td class="">Rp {{ $order->totalHarga }}k</td>
             </tr>
         </tbody>

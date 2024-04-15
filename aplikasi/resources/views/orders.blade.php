@@ -9,8 +9,8 @@
     <div class="filter">
         <form action="/orders" method="GET" enctype="multipart/form-data" class="filter-date" id="form-filter">
             <div>
-                <select onchange="FilterSelect()" name="filter_select" id="filter-select">
-                    <option value="all">Filter...</option>
+                <select onchange="FilterSelect()" name="filter_select" id="filter-select" class="form-select">
+                    <option selected>Filter...</option>
                     <option value="thisday">Today</option>
                     <option value="thismonth">This Month</option>
                     <option value="thisyear">This Year</option>
