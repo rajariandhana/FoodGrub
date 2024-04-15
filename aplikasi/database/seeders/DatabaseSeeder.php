@@ -6,7 +6,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Menu;
 use App\Models\Category;
+use App\Models\Discount;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -301,6 +303,34 @@ class DatabaseSeeder extends Seeder
             'desc'=>'minuman',
         ]);
 
+        // CREATE DISCOUNT
+        \App\Models\Discount::create([
+            'minimumBeli'=>100,
+            'potonganHarga'=>20,
+            'diskon_mulai'=>'2024-04-01',
+            'diskon_selesai'=>'2024-04-30',
+        ]);
+        \App\Models\Discount::create([
+            'minimumBeli'=>120,
+            'potonganHarga'=>30,
+            'diskon_mulai'=>'2024-04-01',
+            'diskon_selesai'=>'2024-04-30',
+        ]);
+        \App\Models\Discount::create([
+            'minimumBeli'=>150,
+            'potonganHarga'=>25,
+            'diskon_mulai'=>'2024-04-01',
+            'diskon_selesai'=>'2024-04-30',
+        ]);
+        \App\Models\Discount::create([
+            'minimumBeli'=>120,
+            'potonganHarga'=>30,
+            'diskon_mulai'=>'2024-03-01',
+            'diskon_selesai'=>'2024-03-31',
+        ]);
+
+
+        // CREATE ORDER
         for ($i = 1; $i <= 50; $i++) {
             // Generate random date between 2022-01-01 and 2024-12-31
             // $randomDate = Carbon::createFromTimestamp(rand(1640995200, 1704105600))->toDateTimeString();
@@ -312,6 +342,8 @@ class DatabaseSeeder extends Seeder
             // Create order with random data
             $order = \App\Models\Order::create([
                 "id" => $i,
+                "keranjangHarga" => 0,
+                "potonganHarga" => 0,
                 "totalHarga" => 0,
                 "created_at" => $randomDate,
                 "updated_at" => $randomDate,
@@ -319,7 +351,7 @@ class DatabaseSeeder extends Seeder
 
             // Determine the number of menu items for this order
             $numItems = rand(1, 5);
-            $totalHarga = 0;
+            $keranjangHarga = 0;
             // Loop to create order menu items
             for ($j = 1; $j <= $numItems; $j++) {
                 // Randomly select a menu
@@ -335,9 +367,21 @@ class DatabaseSeeder extends Seeder
                     "created_at" => $randomDate,
                     "updated_at" => $randomDate,
                 ]);
-                $totalHarga += $menu->harga;
+                $keranjangHarga += $menu->harga;
 
             }
+
+            $potonganHarga = 0;
+            $res = Discount::where('minimumBeli', '<=', $keranjangHarga)
+            ->whereDate('diskon_mulai','<=',$randomDate)
+            ->whereDate('diskon_selesai','>=',$randomDate)
+            ->orderByDesc('minimumBeli')
+            ->first();
+            if($res) $potonganHarga = $res->potonganHarga;
+            // $potonganHarga = DiscountController::GetPriceCut($keranjangHarga, $randomDate);
+            $totalHarga = $keranjangHarga - $potonganHarga;
+            $order->update(['keranjangHarga' => $keranjangHarga]);
+            $order->update(['potonganHarga' => $potonganHarga]);
             $order->update(['totalHarga' => $totalHarga]);
         }
         // CREATE ORDER
@@ -452,18 +496,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        // CREATE DISCOUNT
-        \App\Models\Discount::create([
-            'minimumBeli'=>100,
-            'potonganHarga'=>20,
-            'diskon_mulai'=>'2024-04-01',
-            'diskon_selesai'=>'2024-04-30',
-        ]);
-        \App\Models\Discount::create([
-            'minimumBeli'=>120,
-            'potonganHarga'=>30,
-            'diskon_mulai'=>'2024-03-01',
-            'diskon_selesai'=>'2024-03-31',
-        ]);
+        
     }
 }

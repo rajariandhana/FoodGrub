@@ -39,7 +39,7 @@
             <a href="/menus"><img src="{{ url('icon/utensil.png') }}" alt="">Menu</a>
             <a href="/orders"><img src="{{ url('icon/list.png') }}" alt="">Order History</a>
             <a href="/neworder"><img src="{{ url('icon/cart.png') }}" alt="">New Order</a>
-            <a href="/discount"><img src="{{ url('icon/discount.png') }}" alt="">Discount</a>
+            <a href="/discount"><img src="{{ url('icon/percentage.png') }}" alt="">Discount</a>
             <a href="/test"><img src="{{ url('icon/.png') }}" alt="">test</a>
         </div>
 

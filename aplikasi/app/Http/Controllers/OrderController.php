@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\order_menu;
 use App\Models\Menu;
+use App\Models\Discount;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 // use App\Http\Controllers\Controller;
@@ -103,22 +104,27 @@ class OrderController extends Controller
         $pattern = '/\[(.*?)\]/';
         preg_match_all($pattern, $str, $matches);
         $result = [];
-        $price = 0;
+        $keranjangHarga = 0;
         foreach ($matches[1] as $match) {
             $numbers = explode('_', $match);
-            $price += intval($numbers[2] * $numbers[3]);
+            $keranjangHarga += intval($numbers[2] * $numbers[3]);
             $result[] = [intval($numbers[0]), strval($numbers[1]), intval($numbers[2]), intval($numbers[3])];
         }
         // dd($result);
-        $newOrderID = $this->GetNewOrderID($price);
+        $todayDate = Carbon::today();
+        $potonganHarga = DiscountController::GetPriceCut($keranjangHarga, $todayDate);
+        $totalHarga = $keranjangHarga - $potonganHarga;
+        $newOrderID = $this->GetNewOrderID($keranjangHarga, $potonganHarga, $totalHarga);
         $this->StoreData($result, $newOrderID);
         return redirect('/orders');
         // dd($result);
     }
-    public function GetNewOrderID($price)
+    public function GetNewOrderID($keranjangHarga, $potonganHarga, $totalHarga)
     {
         $order = new Order();
-        $order->totalHarga = $price;
+        $order->keranjangHarga = $keranjangHarga;
+        $order->potonganHarga = $potonganHarga;
+        $order->totalHarga = $totalHarga;
         $order->save();
         return $order->id;
     }
