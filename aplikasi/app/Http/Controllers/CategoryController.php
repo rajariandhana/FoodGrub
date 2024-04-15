@@ -39,7 +39,7 @@ class CategoryController extends Controller
             'nama'=>'required',
         ],
         [
-            'nama.required'=>'nama tidak boleh kosong',
+            'nama.required'=>'category name cannot be empty',
         ]);
         Category::create([
             'nama'=>$request->nama,
@@ -51,15 +51,15 @@ class CategoryController extends Controller
     public function update_category(Request $request, $id)
     {
         $request->validate([
-            'nama'=>'required',
+            'namaCategory'=>'required',
         ],
         [
-            'nama.required'=>'nama tidak boleh kosong',
+            'namaCategory.required'=>'category name cannot be empty',
         ]);
         $category = Category::findorfail($id);
         $new_data = [
-            'nama'=>$request->nama,
-            'slug'=>$request->nama,
+            'nama'=>$request->namaCategory,
+            'slug'=>$request->namaCategory,
         ];
         $category->update($new_data);
         return redirect('/menus');

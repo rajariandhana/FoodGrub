@@ -3,29 +3,64 @@
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
 }
-
-header
+body
 {
-    background-color: orange;
+    /* margin: 0 60px; */
     display: flex;
-    align-items: center;
-    gap: 2em;
+    background-color: var(--grey1);
+}
+/* DD5341 */
+/* F37D59 */
+/* F3F3F3 */
+/* DEDEDE */
+:root
+{
+    --red1:#DD5341;
+    --red2:#c14737;
+    --red3:#F37D59;
+    --grey1:#F3F3F3;
+    --grey2:#DEDEDE;
+
+    --green:#00CA4E;
+    --red:#FF605C;
+    --orange:#FFBD44;
+}
+
+.content-container
+{
+    /* background-color: blue; */
+    margin-top: 20px;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+}
+.content
+{
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 table
 {
     /* width: 100%; */
+    background-color: white;
     border-collapse: collapse;
 }
 th, td
 {
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
+    border: 1px solid var(--grey2);
     /* padding: 8px; */
     text-align: left;
 }
-th
+.row-dummy td
 {
-    background-color: #f2f2f2;
+    background-color: var(--grey1);
+    border: 1px solid var(--grey1);
+    border-bottom: 1px solid var(--grey2);
+    height: 1em;
 }
 .categoryName
 {
@@ -67,6 +102,17 @@ th
     padding: 5px 5px;
     border-radius: 5px;
 }
+.prime1
+{
+    background-color: var(--red1);
+    color: white;
+}
+.back
+{
+    background-color: white;
+    color: var(--red1);
+    border: 1px solid var(--red1);
+}
 
 button
 {
@@ -85,21 +131,69 @@ button:hover
     opacity: 90%;
 }
 
- .input-submit
- {
+.input-submit
+{
     display: flex;
     flex-direction: row;
     gap: 10px;
- }
+}
 
- input[type=text], select
+input[type=text],input[type=number], select
 {
     /* width: 100%; */
-    min-width: 300px;
+    /* min-width: 300px; */
     padding: 10px 10px;
     font-size: 1em;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+        -webkit-appearance: none;
+        margin: 0;
+}
+
+input[type=number]
+{
+    -moz-appearance: textfield; /* Firefox */
+}
+input[type="date"]
+{
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1em;
+}
+select {
+    appearance: none; /* Removes default styles */
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    font-size: 1rem; /* Adjust font size as needed */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 5px; /* Border radius */
+    background-color: #fff; /* Background color */
+    color: #333; /* Text color */
+    outline: none; /* Remove outline */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
   }
+
+
+.alert
+{
+    background-color: white;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--red);
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alert-danger
+{
+    color: var(--red);
+}

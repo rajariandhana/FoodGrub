@@ -7,12 +7,12 @@
     <tbody>
         @foreach ($categories as $category)
             <tr class="categoryRow">
-                <td class="categoryName">{{$category->nama}}</td>
-                <td></td>
+                <td class="menuNama">{{$category->nama}}</td>
+                <td class="menuHarga">Price</td>
                 <td></td>
             </tr>
             @foreach ($category->menus as $menu)
-                <tr class="menuRow">
+                <tr class="">
                     <td class="menuNama">{{ $menu->nama }}</td>
                     <td class="menuHarga">{{ $menu->harga }}</td>
                     <td class="addToCartCell">
@@ -22,6 +22,11 @@
                     </td>
                 </tr>
             @endforeach
+            <tr class="row-dummy">
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         @endforeach
     </tbody>
 </table>

@@ -10,6 +10,7 @@ use App\Http\Controllers\TempController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\KategoriController;
 
 /*
@@ -57,8 +58,10 @@ Route::post('/create_category',[CategoryController::class,'create_category']);
 Route::put('/update_category/{category_id}',[CategoryController::class,'update_category']);
 Route::delete('/delete_category/{category_id}',[CategoryController::class,'delete_category']);
 
-Route::get('/neworder', [OrderController::class, 'neworder']);
-Route::get('/orders', [OrderController::class, 'orders']);
+Route::get('/neworder', [OrderController::class, 'NewOrder']);
+Route::get('/orders', [OrderController::class, 'Orders']);
+Route::get('/orders/{order_id}', [OrderController::class, 'ShowOrder']);
+// Route::get('/orders/{order}', [OrderController::class, 'orders']);
 
 Route::post('/addtocart/{menu_id}',[OrderController::class,'AddToCart']);
 Route::post('/removefromcart/{menu_id}',[OrderController::class,'RemoveFromCart']);
@@ -71,3 +74,12 @@ Route::post('/create_order', [OrderController::class, 'CreateOrder']);
 Route::post('/create_menu',[MenuController::class, 'create_menu']);
 Route::put('/update_menu/{menu_id}',[MenuController::class, 'update_menu']);
 Route::delete('/delete_menu/{menu_id}',[MenuController::class,'delete_menu']);
+
+Route::get('/discount', [DiscountController::class, 'index']);
+
+
+Route::get('/test', function () {
+    return view('test',[
+        'namaHalaman'=>'test'
+    ]);
+});
