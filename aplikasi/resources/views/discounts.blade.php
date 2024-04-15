@@ -16,8 +16,8 @@
         <tbody>
             @foreach ($discounts as $discount)
                 <tr>
-                    <td class="diskonMinimum">{{$discount->minimumBeli}}</td>
-                    <td class="diskonPotongan">{{$discount->potonganHarga}}</td>
+                    <td class="diskonMinimum">Rp {{$discount->minimumBeli}}k</td>
+                    <td class="diskonPotongan">Rp {{$discount->potonganHarga}}k</td>
                     <td class="diskonTanggal">{{$discount->diskon_mulai}}</td>
                     <td class="diskonTanggal">{{$discount->diskon_selesai}}</td>
                     {{-- <td>

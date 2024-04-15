@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $namaHalaman }}</title>
+    <link rel="stylesheet" href="{{ asset('cssBootstrap/bootstrap.min.css') }}">
+
     <link rel="stylesheet" href="{{ url('css/main.css') }}">
     <link rel="stylesheet" href="{{ url('css/sidebar.css') }}">
     @yield('css')
@@ -49,6 +51,9 @@
             @yield('container')
         </div>
     </div>
+    <script src="{{asset('jsBootstrap/bootstrap.min.js')}}">
+
+    </script>
 </body>
 
 </html>
