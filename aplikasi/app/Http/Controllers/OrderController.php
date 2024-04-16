@@ -31,6 +31,7 @@ class OrderController extends Controller
 
         $startDate = "";
         $endDate = "";
+        $showing = "All orders";
         if ($request->has('filter_select'))
         {
             switch ($request->filter_select)
@@ -38,20 +39,24 @@ class OrderController extends Controller
                 case 'thisday':
                     $startDate = Carbon::today()->toDateString();
                     $endDate = Carbon::today()->toDateString();
+                    $showing = "Orders today";
                     break;
                 case 'thismonth':
                     $startDate = Carbon::now()->startOfMonth()->toDateString();
                     $endDate = Carbon::now()->endOfMonth()->toDateString();
+                    $showing = "Orders this month";
                     break;
                 case 'thisyear':
                     $startDate = Carbon::now()->startOfYear()->toDateString();
                     $endDate = Carbon::now()->endOfYear()->toDateString();
+                    $showing = "Orders year";
                     break;
                 case 'customdates':
                     if($request->has('date_start') && $request->has('date_end'))
                     {
                         $startDate = $request->date_start;
                         $endDate = $request->date_end;
+                        $showing = "Orders between $startDate and $endDate";
                     }
                     break;
                 default:
@@ -68,13 +73,17 @@ class OrderController extends Controller
         // $orders = $orders->paginate(10);
         $orders_ctr = $orders->count();
         $orders_sum_totalHarga = $orders->sum('totalHarga');
+        $orders_sum_potonganHarga = $orders->sum('potonganHarga');
         $orders_sum_totalHarga *= 1000;
+        $orders_sum_potonganHarga *= 1000;
 
         return view('orders', [
             'namaHalaman' => 'Order History',
             'orders' => $orders,
             'orders_ctr' => $orders_ctr,
             'orders_sum_totalHarga' => $orders_sum_totalHarga,
+            'orders_sum_potonganHarga' => $orders_sum_potonganHarga,
+            'showing' =>$showing,
         ]);
     }
 

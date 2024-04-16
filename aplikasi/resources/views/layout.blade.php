@@ -35,7 +35,7 @@
 
     <div class="sidebar">
         <a href="/" id="button-home">
-            App
+            FoodGrub
         </a>
         <div class="divider">
             
