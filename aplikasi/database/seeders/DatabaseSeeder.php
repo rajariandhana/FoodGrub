@@ -323,10 +323,10 @@ class DatabaseSeeder extends Seeder
             'diskon_selesai'=>'2024-04-30',
         ]);
         \App\Models\Discount::create([
-            'minimumBeli'=>120,
-            'potonganHarga'=>30,
-            'diskon_mulai'=>'2024-03-01',
-            'diskon_selesai'=>'2024-03-31',
+            'minimumBeli'=>200,
+            'potonganHarga'=>50,
+            'diskon_mulai'=>'2024-01-01',
+            'diskon_selesai'=>'2024-01-31',
         ]);
 
 
