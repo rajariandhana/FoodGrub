@@ -83,3 +83,7 @@ Route::get('/test', function () {
         'namaHalaman'=>'test'
     ]);
 });
+
+Route::post('/create_discount',[DiscountController::class,'create_discount']);
+Route::delete('/delete_discount/{discount_id}',[DiscountController::class,'delete_discount']);
+Route::put('/update_discount/{discount_id}',[DiscountController::class, 'update_discount']);
