@@ -1,10 +1,14 @@
 var namaHalaman = document.title;
-if(namaHalaman == 'Home') return;
-
-// namaHalaman id
-var namaHalamanID = document.getElementById(namaHalaman);
-if(namaHalamanID == null)
+console.log(namaHalaman);
+if(namaHalaman != 'Home')
 {
-    document.getElementById('Menu').classList.add('nav-selected');
+    // namaHalaman id
+    var nav = document.getElementById(namaHalaman);
+    if(nav == null)
+    {
+        document.getElementById('Menu').classList.add('nav-selected');
+    }
+    // nav.classList.add('nav-selected');
+    nav.className = 'nav-selected';
 }
-namaHalamanID.classList.add('nav-selected');
+
