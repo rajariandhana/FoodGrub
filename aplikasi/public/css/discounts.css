@@ -27,3 +27,7 @@ th, td
 {
     flex-grow: 1;
 }
+#rowEditDiskon
+{
+    visibility: hidden;
+}

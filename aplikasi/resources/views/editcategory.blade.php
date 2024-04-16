@@ -44,6 +44,7 @@
         }
 
         function edit(MenuId) {
+            document.getElementById('rowEditMenu').style.visibility = 'visible';
             var nama = document.getElementById('nama' + MenuId).innerText;
             var harga = document.getElementById('harga' + MenuId).innerText;
             var desc = document.getElementById('desc' + MenuId).innerText;
@@ -91,6 +92,26 @@
             @endforeach
 
             <tr>
+                <form action="/create_menu" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <td class="menuNama">
+                        <input class="input-create" type="text" class="form-control" name="nama"
+                            placeholder="New menu name">
+                    </td>
+                    <td class="menuHarga">
+                        <input class="input-create" type="text" class="form-control" name="harga" placeholder="New price">
+                    </td>
+                    <td class="menuDesc">
+                        <input class="input-create" type="text" class="form-control" name="desc"
+                            placeholder="New description">
+                        <input id="editCatId" type="text" class="form-control" value="{{ $category->id }}"
+                            name="category_id" style="display: none">
+                    </td>
+                    <td class="menuCRUD"><button type="submit" class="green">Create Menu</button></td>
+                </form>
+            </tr>
+            <tr id="rowEditMenu">
                 <form id="editForm" action="/update_menu/0" method="POST" enctype="multipart/form-data">@csrf
                     @method('+put+')
                     @csrf
@@ -121,26 +142,6 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
 
-                </form>
-            </tr>
-            <tr>
-                <form action="/create_menu" method="POST" enctype="multipart/form-data">
-                    @csrf
-
-                    <td class="menuNama">
-                        <input class="input-create" type="text" class="form-control" name="nama"
-                            placeholder="New menu name">
-                    </td>
-                    <td class="menuHarga">
-                        <input class="input-create" type="text" class="form-control" name="harga" placeholder="New price">
-                    </td>
-                    <td class="menuDesc">
-                        <input class="input-create" type="text" class="form-control" name="desc"
-                            placeholder="New description">
-                        <input id="editCatId" type="text" class="form-control" value="{{ $category->id }}"
-                            name="category_id" style="display: none">
-                    </td>
-                    <td class="menuCRUD"><button type="submit" class="green">Create Menu</button></td>
                 </form>
             </tr>
         </tbody>

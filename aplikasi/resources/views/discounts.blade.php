@@ -28,6 +28,7 @@
                     </td> --}}
                     <script>
                         function edit(DiscId) {
+                            document.getElementById('rowEditDiskon').style.visibility = 'visible';
                             var minBeli = document.getElementById('minBeli' + DiscId).innerText;
                             var disc = document.getElementById('disc' + DiscId).innerText;
                             var dm  = document.getElementById('dm' + DiscId).innerText;
@@ -81,7 +82,7 @@
                     <td class="diskonCRUD"><button type="submit" class="green">Create Discount</button></td>
                 </form>
             </tr>
-            <tr>
+            <tr id="rowEditDiskon">
                 <form  action="/update_discount/{{ $discount->id}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
