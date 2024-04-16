@@ -35,14 +35,17 @@
 
     <div class="sidebar">
         <a href="/" id="button-home">
-            <h1>App</h1>
+            App
         </a>
+        <div class="divider">
+            
+        </div>
         <div class="navigation">
-            <a href="/menus"><img src="{{ url('icon/utensil.png') }}" alt="">Menu</a>
-            <a href="/orders"><img src="{{ url('icon/list.png') }}" alt="">Order History</a>
-            <a href="/neworder"><img src="{{ url('icon/cart.png') }}" alt="">New Order</a>
-            <a href="/discount"><img src="{{ url('icon/percentage.png') }}" alt="">Discount</a>
-            <a href="/test"><img src="{{ url('icon/.png') }}" alt="">test</a>
+            <a id="Menu" href="/menus"><img src="{{ url('icon/utensil.png') }}" alt="">Menu</a>
+            <a id="Order History" href="/orders"><img src="{{ url('icon/list.png') }}" alt="">Order History</a>
+            <a id="New Order" href="/neworder"><img src="{{ url('icon/cart.png') }}" alt="">New Order</a>
+            <a id="Discount" href="/discount"><img src="{{ url('icon/percentage.png') }}" alt="">Discount</a>
+            <a id="test" href="/test"><img src="{{ url('icon/.png') }}" alt="">test</a>
         </div>
 
     </div>
@@ -52,6 +55,9 @@
         </div>
     </div>
     <script src="{{asset('jsBootstrap/bootstrap.min.js')}}">
+
+    </script>
+    <script src="{{asset('js/sidebar.js')}}">
 
     </script>
 </body>

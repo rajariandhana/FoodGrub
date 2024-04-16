@@ -11,7 +11,7 @@ class DiscountController extends Controller
     public function index()
     {
         return view('discounts',[
-            'namaHalaman'=>'discounts',
+            'namaHalaman'=>'Discount',
             'discounts'=>Discount::all()
             // 'daftarmenu'=>Category::tipe()
         ]);
