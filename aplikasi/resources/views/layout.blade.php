@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $namaHalaman }}</title>
+    <link rel="stylesheet" href="{{ asset('cssBootstrap/bootstrap.min.css') }}">
+
     <link rel="stylesheet" href="{{ url('css/main.css') }}">
     <link rel="stylesheet" href="{{ url('css/sidebar.css') }}">
     @yield('css')
@@ -33,14 +35,17 @@
 
     <div class="sidebar">
         <a href="/" id="button-home">
-            <h1>App</h1>
+            FoodGrub
         </a>
+        <div class="divider">
+            
+        </div>
         <div class="navigation">
-            <a href="/menus"><img src="{{ url('icon/utensil.png') }}" alt="">Menu</a>
-            <a href="/orders"><img src="{{ url('icon/list.png') }}" alt="">Order History</a>
-            <a href="/neworder"><img src="{{ url('icon/cart.png') }}" alt="">New Order</a>
-            <a href="/discount"><img src="{{ url('icon/discount.png') }}" alt="">Discount</a>
-            <a href="/test"><img src="{{ url('icon/.png') }}" alt="">test</a>
+            <a id="Menu" href="/menus"><img src="{{ url('icon/utensil.png') }}" alt="">Menu</a>
+            <a id="Order History" href="/orders"><img src="{{ url('icon/list.png') }}" alt="">Order History</a>
+            <a id="New Order" href="/neworder"><img src="{{ url('icon/cart.png') }}" alt="">New Order</a>
+            <a id="Discount" href="/discount"><img src="{{ url('icon/percentage.png') }}" alt="">Discount</a>
+            <a id="test" href="/test"><img src="{{ url('icon/.png') }}" alt="">test</a>
         </div>
 
     </div>
@@ -49,6 +54,12 @@
             @yield('container')
         </div>
     </div>
+    <script src="{{asset('jsBootstrap/bootstrap.min.js')}}">
+
+    </script>
+    <script src="{{asset('js/sidebar.js')}}">
+
+    </script>
 </body>
 
 </html>

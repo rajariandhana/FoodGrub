@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\order_menu;
 use App\Models\Menu;
+use App\Models\Discount;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 // use App\Http\Controllers\Controller;
@@ -30,6 +31,7 @@ class OrderController extends Controller
 
         $startDate = "";
         $endDate = "";
+        $showing = "All orders";
         if ($request->has('filter_select'))
         {
             switch ($request->filter_select)
@@ -37,20 +39,24 @@ class OrderController extends Controller
                 case 'thisday':
                     $startDate = Carbon::today()->toDateString();
                     $endDate = Carbon::today()->toDateString();
+                    $showing = "Orders today";
                     break;
                 case 'thismonth':
                     $startDate = Carbon::now()->startOfMonth()->toDateString();
                     $endDate = Carbon::now()->endOfMonth()->toDateString();
+                    $showing = "Orders this month";
                     break;
                 case 'thisyear':
                     $startDate = Carbon::now()->startOfYear()->toDateString();
                     $endDate = Carbon::now()->endOfYear()->toDateString();
+                    $showing = "Orders year";
                     break;
                 case 'customdates':
                     if($request->has('date_start') && $request->has('date_end'))
                     {
                         $startDate = $request->date_start;
                         $endDate = $request->date_end;
+                        $showing = "Orders between $startDate and $endDate";
                     }
                     break;
                 default:
@@ -67,13 +73,17 @@ class OrderController extends Controller
         // $orders = $orders->paginate(10);
         $orders_ctr = $orders->count();
         $orders_sum_totalHarga = $orders->sum('totalHarga');
+        $orders_sum_potonganHarga = $orders->sum('potonganHarga');
         $orders_sum_totalHarga *= 1000;
+        $orders_sum_potonganHarga *= 1000;
 
         return view('orders', [
             'namaHalaman' => 'Order History',
             'orders' => $orders,
             'orders_ctr' => $orders_ctr,
             'orders_sum_totalHarga' => $orders_sum_totalHarga,
+            'orders_sum_potonganHarga' => $orders_sum_potonganHarga,
+            'showing' =>$showing,
         ]);
     }
 
@@ -103,22 +113,27 @@ class OrderController extends Controller
         $pattern = '/\[(.*?)\]/';
         preg_match_all($pattern, $str, $matches);
         $result = [];
-        $price = 0;
+        $keranjangHarga = 0;
         foreach ($matches[1] as $match) {
             $numbers = explode('_', $match);
-            $price += intval($numbers[2] * $numbers[3]);
+            $keranjangHarga += intval($numbers[2] * $numbers[3]);
             $result[] = [intval($numbers[0]), strval($numbers[1]), intval($numbers[2]), intval($numbers[3])];
         }
         // dd($result);
-        $newOrderID = $this->GetNewOrderID($price);
+        $todayDate = Carbon::today();
+        $potonganHarga = DiscountController::GetPriceCut($keranjangHarga, $todayDate);
+        $totalHarga = $keranjangHarga - $potonganHarga;
+        $newOrderID = $this->GetNewOrderID($keranjangHarga, $potonganHarga, $totalHarga);
         $this->StoreData($result, $newOrderID);
         return redirect('/orders');
         // dd($result);
     }
-    public function GetNewOrderID($price)
+    public function GetNewOrderID($keranjangHarga, $potonganHarga, $totalHarga)
     {
         $order = new Order();
-        $order->totalHarga = $price;
+        $order->keranjangHarga = $keranjangHarga;
+        $order->potonganHarga = $potonganHarga;
+        $order->totalHarga = $totalHarga;
         $order->save();
         return $order->id;
     }

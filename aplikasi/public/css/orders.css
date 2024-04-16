@@ -38,3 +38,12 @@ th, td
     align-items: center;
     gap: .5em;
 }
+#filter-select
+{
+   max-width: 300px;
+}
+.showing
+{
+    font-weight: bold;
+    font-size: 1.5em;
+}
