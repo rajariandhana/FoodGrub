@@ -1,0 +1,29 @@
+.content
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5em;
+
+    margin-left: 3em;
+}
+
+.hero h1
+{
+    /* font-weight: bold; */
+    font-size: 4em;
+}
+.hero p
+{
+    font-weight: bold;
+}
+span
+{
+    color: var(--red1);
+    font-weight: bold;
+}
+.description
+{
+    font-size: 1.5em;
+    max-width: 900px;
+    text-align: justify;
+}

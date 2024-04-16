@@ -11,13 +11,15 @@
             <th class="diskonPotongan">Price Cut</th>
             <th class="diskonTanggal">Start Date</th>
             <th class="diskonTanggal">End Date</th>
-            <th class="diskonCRUD"></th>
+            {{-- <th class="diskonCRUD"></th> --}}
+            <th></th>
+            {{-- <th class="diskonCRUD"></th> --}}
         </thead>
         <tbody>
             @foreach ($discounts as $discount)
                 <tr>
-                    <td class="diskonMinimum" id="minBeli{{ $discount->id }}">{{$discount->minimumBeli}}</td>
-                    <td class="diskonPotongan" id="disc{{ $discount->id }}">{{$discount->potonganHarga}}</td>
+                    <td class="diskonMinimum" id="minBeli{{ $discount->id }}">Rp {{$discount->minimumBeli}}k</td>
+                    <td class="diskonPotongan" id="disc{{ $discount->id }}">Rp {{$discount->potonganHarga}}k</td>
                     <td class="diskonTanggal" id="dm{{ $discount->id }}">{{$discount->diskon_mulai}}</td>
                     <td class="diskonTanggal" id="ds{{ $discount->id }}">{{$discount->diskon_selesai}}</td>
                     {{-- <td>
@@ -30,10 +32,16 @@
                             var disc = document.getElementById('disc' + DiscId).innerText;
                             var dm  = document.getElementById('dm' + DiscId).innerText;
                             var ds = document.getElementById('ds'+DiscId).innerText;
+                            var regex = /Rp (\d+)k/;
+
                             var inputMb = document.getElementById('editMb');
-                            inputMb.value = minBeli;
+                            var minBeliMatch = minBeli.match(regex);
+                            var minBeliValue = minBeliMatch ? parseInt(minBeliMatch[1]) : null;
+                            inputMb.value = minBeliValue;
                             var inputDisc = document.getElementById('editDisc');
-                            inputDisc.value = disc;
+                            var discMatch = disc.match(regex);
+                            var discValue = discMatch ? parseInt(discMatch[1]) : null;
+                            inputDisc.value = discValue;
                             var inputDm = document.getElementById('editDm');
                             inputDm.value = dm;
                             var inputDs = document.getElementById('editDs');
@@ -44,14 +52,14 @@
                             document.FormEdit.action = '/update_discount/' + DiscId;
                         }
                     </script>
-                    <td>
+                    <td class="diskonCRUD">
                         <form id="deleteForm" action="/delete_discount/{{ $discount->id }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             @method('delete')
                             <button type="submit" class="red">Delete</button>
                         </form>
-                        <button onclick="edit('{{ $discount->id }}')" class="edit orange">Edit</button>
+                        <button onclick="edit('{{ $discount->id }}')" class="orange">Edit</button>
                     </td>
                 </tr>
             @endforeach
@@ -62,7 +70,7 @@
                         <input type="number" class="form-control" name="minimumBeli" placeholder="Minimum spending">
                     </td>
                     <td>
-                        <input type="number" class="form-control" name="potonganHarga" placeholder="Price Cut">
+                        <input type="number" class="form-control" name="potonganHarga" placeholder="Price cut">
                     </td>
                     <td>
                         <input type="date" class="form-control" name="diskon_mulai" placeholder="Date Start">
@@ -70,7 +78,7 @@
                     <td>
                         <input type="date" class="form-control" name="diskon_selesai" placeholder="Date End">
                     </td>
-                    <td class="discountCRUD"><button type="submit" class="green">Create Discount</button></td>
+                    <td class="diskonCRUD"><button type="submit" class="green">Create Discount</button></td>
                 </form>
             </tr>
             <tr>
@@ -78,10 +86,10 @@
                     @csrf
                     @method('put')
                     <td>
-                        <input type="number" id="editMb" class="form-control" name="minimumBeli" placeholder="Minimum spending">
+                        <input type="number" id="editMb" class="form-control" name="minimumBeli" placeholder="New minimum spending">
                     </td>
                     <td>
-                        <input type="number" id="editDisc" class="form-control" name="potonganHarga" placeholder="Price Cut">
+                        <input type="number" id="editDisc" class="form-control" name="potonganHarga" placeholder="new price cut">
                     </td>
                     <td>
                         <input type="date" id="editDm" class="form-control" name="diskon_mulai" placeholder="Date Start">
@@ -89,7 +97,7 @@
                     <td>
                         <input type="date" id="editDs" class="form-control" name="diskon_selesai" placeholder="Date End">
                     </td>
-                    <td class="discountCRUD"><button type="submit" class="green">Edit Discount</button></td>
+                    <td class="diskonCRUD"><button type="submit" class="green">Save</button></td>
                 </form>
             </tr>
 {{--

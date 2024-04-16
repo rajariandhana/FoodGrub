@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Discount;
-use Carbon\Carbon;
 
 class DiscountController extends Controller
 {

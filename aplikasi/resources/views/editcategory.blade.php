@@ -13,7 +13,7 @@
         <form action="/update_category/{{ $category->id }}" method="POST" enctype="multipart/form-data" class="input-submit">
             @csrf
             @method('put')
-            <input class="menuNama" type="text" name="namaCategory" placeholder="New Category Name">
+            <input class="menuNama" type="text" name="namaCategory" placeholder="New category name">
             <button type="submit" class="orange">Change Category Name</button>
             @error('namaCategory')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -47,10 +47,14 @@
             var nama = document.getElementById('nama' + MenuId).innerText;
             var harga = document.getElementById('harga' + MenuId).innerText;
             var desc = document.getElementById('desc' + MenuId).innerText;
+            // console.log(nama+" "+harga+" "+desc);
             var inputName = document.getElementById('editNama');
             inputName.value = nama;
             var inputHarga = document.getElementById('editHarga');
-            inputHarga.value = harga;
+            var regex = /Rp (\d+)k/;
+            var match = harga.match(regex);
+            var hargaValue = match ? parseInt(match[1]) : null;
+            inputHarga.value = hargaValue;
             var inputDesc = document.getElementById('editDesc');
             inputDesc.value = desc;
             var inputCatId = document.getElementById('editCatId');
@@ -66,14 +70,13 @@
                 <th class="menuHarga">Price</th>
                 <th class="menuDesc">Description</th>
                 <th class=""></th>
-                <th class=""></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($category->menus as $menu)
                 <tr id="tr{{ $menu->id }}">
                     <td class="menuNama" id="nama{{ $menu->id }}">{{ $menu->nama }}</td>
-                    <td class="menuHarga" id="harga{{ $menu->id }}">{{ $menu->harga }}</td>
+                    <td class="menuHarga" id="harga{{ $menu->id }}">Rp {{ $menu->harga }}k</td>
                     <td class="menuDesc" id="desc{{ $menu->id }}">{{ $menu->desc }}</td>
                     <td class="menuCRUD">
                         <form id="deleteForm" action="/delete_menu/{{ $menu->id }}" method="POST"
@@ -83,9 +86,7 @@
                             <button type="submit" class="red"
                                 onclick="return confirm('Are you sure you want to delete this menu?')">Delete Menu</button>
                         </form>
-                    </td>
-                    <td class="menuCRUD" id ="editButton{{ $menu->id }}"><button onclick="edit('{{ $menu->id }}')"
-                            class="orange">Edit</button></td>
+                        <button onclick="edit('{{ $menu->id }}')" class="orange">Edit</button></td>
                 </tr>
             @endforeach
 
@@ -114,8 +115,6 @@
                     @enderror
                     <td class="menuCRUD">
                         <button type="submit" class="green">Save</button>
-                    </td>
-                    <td>
                         <input id="editCatId" type="text" class="form-control" name="category_id" style="display: none">
                     </td>
                     @error('category_id')
@@ -130,19 +129,18 @@
 
                     <td class="menuNama">
                         <input class="input-create" type="text" class="form-control" name="nama"
-                            placeholder="Menu name">
+                            placeholder="New menu name">
                     </td>
                     <td class="menuHarga">
-                        <input class="input-create" type="text" class="form-control" name="harga" placeholder="Price">
+                        <input class="input-create" type="text" class="form-control" name="harga" placeholder="New price">
                     </td>
                     <td class="menuDesc">
                         <input class="input-create" type="text" class="form-control" name="desc"
-                            placeholder="Menu description">
+                            placeholder="New description">
                         <input id="editCatId" type="text" class="form-control" value="{{ $category->id }}"
                             name="category_id" style="display: none">
                     </td>
                     <td class="menuCRUD"><button type="submit" class="green">Create Menu</button></td>
-                    <td></td>
                 </form>
             </tr>
         </tbody>

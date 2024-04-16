@@ -22,14 +22,21 @@ th, td
 }
 .menuHarga, .menuHarga .input-create, .menuQty
 {
-    width: 60px;
+    width: 100px;
     text-align: center;
 }
-
+.menuCRUD
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: .5em;
+}
 .menuCRUD button
 {
-    width: 100%;
+    /* width: 100%; */
     /* background-color: red; */
+    flex-grow: 1;
 }
 
 .addToCartCell
