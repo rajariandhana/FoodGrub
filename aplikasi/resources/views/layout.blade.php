@@ -45,7 +45,7 @@
             <a id="Order History" href="/orders"><img src="{{ url('icon/list.png') }}" alt="">Order History</a>
             <a id="New Order" href="/neworder"><img src="{{ url('icon/cart.png') }}" alt="">New Order</a>
             <a id="Discount" href="/discount"><img src="{{ url('icon/percentage.png') }}" alt="">Discount</a>
-            <a id="test" href="/test"><img src="{{ url('icon/.png') }}" alt="">test</a>
+            {{-- <a id="test" href="/test"><img src="{{ url('icon/.png') }}" alt="">test</a> --}}
         </div>
 
     </div>

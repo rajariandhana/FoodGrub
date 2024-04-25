@@ -8,16 +8,26 @@ th, td
 }
 .diskonMinimum, .diskonMinimum input
 {
-    width: 170px;
+    width: 200px;
     text-align: center;
 }
 .diskonPotongan, .diskonPotongan input
 {
-    width: 90px;
+    width: 150px;
     text-align: center;
+}
+.diskonCRUD
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: .5em;
 }
 .diskonCRUD button
 {
-    /* display: flex; */
-    /* width: 150px; */
+    flex-grow: 1;
+}
+#rowEditDiskon
+{
+    visibility: hidden;
 }
